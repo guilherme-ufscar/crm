@@ -1,0 +1,291 @@
+// Prisma Schema - Plataforma de Leads Jurídicos
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// ==================== ENUMS ====================
+
+enum AreaDireito {
+  TRABALHISTA
+  PREVIDENCIARIO
+  CONSUMIDOR
+  FAMILIA
+  CRIMINAL
+  IMOVEIS
+  EMPRESARIAL
+  OUTROS
+}
+
+enum Urgencia {
+  URGENTE
+  ALTA
+  MEDIA
+  BAIXA
+}
+
+enum LeadStatus {
+  NOVO
+  RETIDO
+  A_VENDA
+  VENDIDO
+  BLOQUEADO
+}
+
+enum LeadQualidade {
+  QUENTE
+  MORNO
+  FRIO
+}
+
+enum CanalOrigem {
+  SITE
+  WHATSAPP
+  INDICACAO
+  BLOG
+}
+
+enum OrderStatus {
+  PENDENTE
+  PAGO
+  CANCELADO
+  ESTORNADO
+}
+
+enum AdminRole {
+  MASTER
+  OPERADOR
+  AUDITOR
+}
+
+enum CreditTransactionType {
+  COMPRA
+  USO
+  ESTORNO
+}
+
+enum LeadStatusAdvogado {
+  NOVO
+  CONTATADO
+  EM_NEGOCIACAO
+  FECHADO
+  PERDIDO
+}
+
+// ==================== MODELS ====================
+
+model Lead {
+  id        String   @id @default(cuid())
+  criadoEm  DateTime @default(now())
+  atualizadoEm DateTime @updatedAt
+
+  // Dados de contato
+  nome      String
+  whatsapp  String
+  email     String?
+  cidade    String
+  uf        String
+  melhorHorario String?
+
+  // Dados do caso
+  areaDireito AreaDireito
+  urgencia    Urgencia   @default(MEDIA)
+  descricao   String     @db.Text
+  temDocumentos Boolean  @default(false)
+
+  // Flags de bloqueio
+  possuiAdvogado      Boolean @default(false)
+  processoEmAndamento Boolean @default(false)
+
+  // Consentimentos
+  consentimentoLGPD     Boolean @default(false)
+  consentimentoWhatsApp Boolean @default(false)
+
+  // Origem / UTM
+  canalOrigem CanalOrigem @default(SITE)
+  utmSource   String?
+  utmMedium   String?
+  utmCampaign String?
+  utmTerm     String?
+  utmContent  String?
+
+  // Status e classificação (admin)
+  status          LeadStatus    @default(NOVO)
+  qualidade       LeadQualidade?
+  observacoesAdmin String?      @db.Text
+
+  // Venda
+  advogadoId String?
+  advogado   Advogado? @relation("leadsAdquiridos", fields: [advogadoId], references: [id])
+  vendidoEm  DateTime?
+
+  // Status pessoal do advogado
+  statusAdvogado LeadStatusAdvogado?
+
+  // Relacionamentos
+  anexos    LeadAnexo[]
+  auditLogs AuditLog[]
+
+  @@map("leads")
+}
+
+model LeadAnexo {
+  id        String   @id @default(cuid())
+  criadoEm  DateTime @default(now())
+
+  leadId   String
+  lead     Lead   @relation(fields: [leadId], references: [id], onDelete: Cascade)
+
+  filename    String
+  mimetype    String
+  storagePath String
+
+  @@map("lead_anexos")
+}
+
+model Advogado {
+  id        String   @id @default(cuid())
+  criadoEm  DateTime @default(now())
+  atualizadoEm DateTime @updatedAt
+  lastLogin DateTime?
+
+  nome      String
+  email     String  @unique
+  telefone  String
+  senhaHash String
+
+  oabNumero String
+  oabUf     String
+
+  areasAtuacao AreaDireito[]
+  estado       String
+  cidade       String
+
+  ativo         Boolean @default(true)
+  saldoCreditos Int     @default(0)
+
+  // Relacionamentos
+  leadsAdquiridos    Lead[]              @relation("leadsAdquiridos")
+  orders             Order[]
+  creditTransactions CreditTransaction[]
+
+  @@map("advogados")
+}
+
+model Pacote {
+  id        String   @id @default(cuid())
+  criadoEm  DateTime @default(now())
+  atualizadoEm DateTime @updatedAt
+
+  nome          String
+  descricao     String? @db.Text
+  creditos      Int
+  precoCentavos Int
+  ativo         Boolean @default(true)
+
+  orders Order[]
+
+  @@map("pacotes")
+}
+
+model Order {
+  id        String   @id @default(cuid())
+  criadoEm  DateTime @default(now())
+
+  advogadoId String
+  advogado   Advogado @relation(fields: [advogadoId], references: [id])
+
+  pacoteId String
+  pacote   Pacote @relation(fields: [pacoteId], references: [id])
+
+  valorCentavos    Int
+  creditosComprados Int
+  status           OrderStatus @default(PENDENTE)
+
+  stripeSessionId  String? @unique
+  stripePaymentId  String? @unique
+  pagoEm           DateTime?
+
+  @@map("orders")
+}
+
+model CreditTransaction {
+  id        String   @id @default(cuid())
+  criadoEm  DateTime @default(now())
+
+  advogadoId String
+  advogado   Advogado @relation(fields: [advogadoId], references: [id])
+
+  tipo       CreditTransactionType
+  quantidade Int
+  descricao  String?
+
+  leadId  String?
+  orderId String?
+
+  @@map("credit_transactions")
+}
+
+model AdminUser {
+  id        String   @id @default(cuid())
+  criadoEm  DateTime @default(now())
+
+  nome      String
+  email     String    @unique
+  senhaHash String
+  role      AdminRole @default(OPERADOR)
+
+  auditLogs AuditLog[]
+
+  @@map("admin_users")
+}
+
+model AuditLog {
+  id        String   @id @default(cuid())
+  criadoEm  DateTime @default(now())
+
+  adminId   String
+  admin     AdminUser @relation(fields: [adminId], references: [id])
+
+  acao       String
+  entidade   String
+  entidadeId String?
+  detalhes   String? @db.Text
+
+  leadId String?
+  lead   Lead?   @relation(fields: [leadId], references: [id])
+
+  @@map("audit_logs")
+}
+
+model BlogPost {
+  id        String   @id @default(cuid())
+  criadoEm  DateTime @default(now())
+  atualizadoEm DateTime @updatedAt
+
+  titulo    String
+  slug      String   @unique
+  resumo    String?  @db.Text
+  conteudo  String   @db.Text
+  area      AreaDireito?
+  publicado Boolean  @default(false)
+  imageUrl  String?
+
+  @@map("blog_posts")
+}
+
+model ContatoMensagem {
+  id        String   @id @default(cuid())
+  criadoEm  DateTime @default(now())
+
+  nome     String
+  email    String
+  assunto  String
+  mensagem String @db.Text
+  lido     Boolean @default(false)
+
+  @@map("contato_mensagens")
+}
