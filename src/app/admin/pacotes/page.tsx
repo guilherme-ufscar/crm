@@ -1,7 +1,7 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useState } from "react";
-import { Plus } from "lucide-react";
+import { MaterialIcon } from "@/components/ui/material-icon";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -65,7 +65,7 @@ export default function AdminPacotesPage() {
       <div className="flex items-center justify-between">
         <h1 className="text-2xl font-bold">Pacotes</h1>
         <Button onClick={() => setShowForm(!showForm)}>
-          <Plus className="mr-1 h-4 w-4" />
+          <MaterialIcon name="add" size={16} className="mr-1" />
           Novo pacote
         </Button>
       </div>
@@ -82,16 +82,16 @@ export default function AdminPacotesPage() {
                 <Input value={form.nome} onChange={(e) => setForm({ ...form, nome: e.target.value })} placeholder="Starter" />
               </div>
               <div className="space-y-1.5">
-                <Label>Créditos</Label>
+                <Label>Cr�ditos</Label>
                 <Input type="number" value={form.creditos} onChange={(e) => setForm({ ...form, creditos: e.target.value })} placeholder="10" />
               </div>
             </div>
             <div className="space-y-1.5">
-              <Label>Preço (R$)</Label>
+              <Label>Pre�o (R$)</Label>
               <Input type="number" step="0.01" value={form.preco} onChange={(e) => setForm({ ...form, preco: e.target.value })} placeholder="500.00" />
             </div>
             <div className="space-y-1.5">
-              <Label>Descrição (opcional)</Label>
+              <Label>Descri��o (opcional)</Label>
               <Textarea value={form.descricao} onChange={(e) => setForm({ ...form, descricao: e.target.value })} />
             </div>
             <Button onClick={handleCreate} disabled={saving}>
@@ -118,7 +118,7 @@ export default function AdminPacotesPage() {
                 </div>
                 <p className="mt-1 text-2xl font-extrabold">{formatCurrency(p.precoCentavos)}</p>
                 <p className="text-sm text-muted-foreground">
-                  {p.creditos} créditos • {formatCurrency(Math.round(p.precoCentavos / p.creditos))}/lead
+                  {p.creditos} cr�ditos � {formatCurrency(Math.round(p.precoCentavos / p.creditos))}/lead
                 </p>
                 {p.descricao && <p className="mt-2 text-sm text-muted-foreground">{p.descricao}</p>}
               </CardContent>

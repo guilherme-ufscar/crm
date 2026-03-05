@@ -1,10 +1,10 @@
-"use client";
+﻿"use client";
 
 import { useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import { useForm, FormProvider } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Send, AlertTriangle, Loader2 } from "lucide-react";
+import { MaterialIcon } from "@/components/ui/material-icon";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import {
@@ -12,10 +12,12 @@ import {
   type LeadFormData,
 } from "@/lib/validations";
 import { trackEvent, getStoredUtmParams } from "@/lib/analytics";
+import { PUBLIC_TURNSTILE_SITE_KEY } from "@/lib/public-env";
 import { LeadFormStep1 } from "./lead-form-step1";
 import { LeadFormStep2 } from "./lead-form-step2";
 import { LeadFormStep3 } from "./lead-form-step3";
 import { LeadFormStep4 } from "./lead-form-step4";
+import { TurnstileField } from "./turnstile-field";
 
 const STEPS = [
   { label: "Área e Contexto", num: 1 },
@@ -30,6 +32,7 @@ export function LeadForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isBlocked, setIsBlocked] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [turnstileToken, setTurnstileToken] = useState("");
 
   const methods = useForm<LeadFormData>({
     resolver: zodResolver(leadFormSchema),
@@ -90,6 +93,12 @@ export function LeadForm() {
     setIsSubmitting(true);
     setError(null);
 
+    if (PUBLIC_TURNSTILE_SITE_KEY && !turnstileToken) {
+      setError("Confirme o captcha antes de enviar.");
+      setIsSubmitting(false);
+      return;
+    }
+
     // Check if blocked
     if (data.possuiAdvogado || data.processoEmAndamento) {
       setIsBlocked(true);
@@ -113,6 +122,7 @@ export function LeadForm() {
           utmTerm: utms.utm_term,
           utmContent: utms.utm_content,
           referer: utms.referer || document.referrer,
+          turnstileToken,
         }),
       });
 
@@ -143,19 +153,19 @@ export function LeadForm() {
 
   if (isBlocked) {
     return (
-      <Card className="border-amber-200 bg-amber-50">
+      <Card className="border-secondary/25 bg-secondary/10">
         <CardContent className="pt-6">
           <div className="flex items-start gap-3">
-            <AlertTriangle className="h-6 w-6 text-amber-600 mt-0.5 shrink-0" />
+            <MaterialIcon name="warning" size={24} className="text-secondary mt-0.5 shrink-0" />
             <div>
-              <h3 className="font-semibold text-amber-900 text-lg">Atenção</h3>
-              <p className="mt-2 text-amber-800">
+              <h3 className="font-semibold text-secondary text-lg">Atenção</h3>
+              <p className="mt-2 text-secondary">
                 Verificamos que você já possui advogado constituído ou tem processo em andamento.
               </p>
-              <p className="mt-3 text-sm text-amber-700">
+              <p className="mt-3 text-sm text-secondary">
                 Nesse caso, recomendamos que entre em contato diretamente com seu advogado atual ou procure a Defensoria Pública da sua região. Nossa plataforma não atende casos nessas condições.
               </p>
-              <p className="mt-3 text-sm text-amber-700">
+              <p className="mt-3 text-sm text-secondary">
                 Se acredita que preencheu incorretamente, você pode tentar novamente.
               </p>
               <Button
@@ -184,18 +194,16 @@ export function LeadForm() {
             {STEPS.map((step) => (
               <div
                 key={step.num}
-                className={`flex flex-col items-center ${
-                  step.num <= currentStep ? "text-primary" : "text-muted-foreground"
-                }`}
+                className={`flex flex-col items-center ${step.num <= currentStep ? "text-primary" : "text-muted-foreground"
+                  }`}
               >
                 <div
-                  className={`flex h-8 w-8 items-center justify-center rounded-full text-sm font-bold transition-colors ${
-                    step.num < currentStep
-                      ? "bg-primary text-white"
+                  className={`flex h-8 w-8 items-center justify-center rounded-full text-sm font-bold transition-colors ${step.num < currentStep
+                      ? "bg-primary text-primary-foreground"
                       : step.num === currentStep
-                      ? "bg-primary text-white"
-                      : "bg-muted text-muted-foreground"
-                  }`}
+                        ? "bg-primary text-primary-foreground"
+                        : "bg-muted text-muted-foreground"
+                    }`}
                 >
                   {step.num}
                 </div>
@@ -218,12 +226,18 @@ export function LeadForm() {
             {currentStep === 2 && <LeadFormStep2 />}
             {currentStep === 3 && <LeadFormStep3 />}
             {currentStep === 4 && <LeadFormStep4 />}
+
+            {currentStep === 4 && (
+              <div className="mt-6">
+                <TurnstileField onTokenChange={setTurnstileToken} />
+              </div>
+            )}
           </CardContent>
         </Card>
 
         {/* Error */}
         {error && (
-          <div className="mt-4 rounded-lg border border-red-200 bg-red-50 p-3 text-sm text-red-800">
+          <div className="mt-4 rounded-lg border border-secondary/25 bg-secondary/10 p-3 text-sm text-secondary">
             {error}
           </div>
         )}
@@ -247,12 +261,12 @@ export function LeadForm() {
             <Button type="submit" variant="whatsapp" size="lg" disabled={isSubmitting}>
               {isSubmitting ? (
                 <>
-                  <Loader2 className="h-4 w-4 animate-spin" />
+                  <MaterialIcon name="progress_activity" size={16} className="animate-spin" />
                   Enviando...
                 </>
               ) : (
                 <>
-                  <Send className="h-4 w-4" />
+                  <MaterialIcon name="send" size={16} />
                   Enviar e falar no WhatsApp
                 </>
               )}
@@ -263,3 +277,4 @@ export function LeadForm() {
     </FormProvider>
   );
 }
+

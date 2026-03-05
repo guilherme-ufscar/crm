@@ -1,12 +1,12 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
-import { CheckCircle, Package } from "lucide-react";
+import { MaterialIcon } from "@/components/ui/material-icon";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
 import { formatCurrency } from "@/lib/utils";
+import { buildWhatsAppUrl } from "@/lib/public-env";
 
 interface Pacote {
   id: string;
@@ -18,7 +18,6 @@ interface Pacote {
 }
 
 export default function PortalPacotesPage() {
-  const router = useRouter();
   const [pacotes, setPacotes] = useState<Pacote[]>([]);
   const [loading, setLoading] = useState(true);
   const [buying, setBuying] = useState<string | null>(null);
@@ -31,26 +30,11 @@ export default function PortalPacotesPage() {
       .finally(() => setLoading(false));
   }, []);
 
-  async function handleBuy(pacoteId: string) {
-    setBuying(pacoteId);
-    try {
-      const res = await fetch("/api/stripe/checkout", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ pacoteId }),
-      });
-      const data = await res.json();
-
-      if (data.url) {
-        window.location.href = data.url;
-      } else {
-        alert(data.error || "Erro ao criar sessão de pagamento");
-      }
-    } catch {
-      alert("Erro ao processar. Tente novamente.");
-    } finally {
-      setBuying(null);
-    }
+  function handleBuy(pacote: Pacote) {
+    setBuying(pacote.id);
+    const message = `Olá! Tenho interesse no pacote "${pacote.nome}" (${pacote.creditos} créditos) no valor de ${formatCurrency(pacote.precoCentavos)}.`;
+    window.open(buildWhatsAppUrl(message), "_blank", "noopener,noreferrer");
+    setBuying(null);
   }
 
   if (loading) {
@@ -71,7 +55,7 @@ export default function PortalPacotesPage() {
       {pacotes.length === 0 ? (
         <Card>
           <CardContent className="py-12 text-center">
-            <Package className="mx-auto h-10 w-10 text-muted-foreground" />
+            <MaterialIcon name="inventory_2" size={40} className="mx-auto text-muted-foreground" />
             <p className="mt-3 text-muted-foreground">Nenhum pacote disponível no momento</p>
           </CardContent>
         </Card>
@@ -83,7 +67,7 @@ export default function PortalPacotesPage() {
               <Card key={pacote.id} className={`relative flex flex-col ${isPopular ? "border-primary shadow-lg ring-2 ring-primary/20" : ""}`}>
                 {isPopular && (
                   <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                    <Badge className="bg-primary text-white">Mais popular</Badge>
+                    <Badge className="bg-primary text-primary-foreground">Mais popular</Badge>
                   </div>
                 )}
                 <CardHeader className="text-center">
@@ -98,15 +82,15 @@ export default function PortalPacotesPage() {
                 <CardContent className="flex-1">
                   <ul className="space-y-2">
                     <li className="flex items-center gap-2 text-sm">
-                      <CheckCircle className="h-4 w-4 text-green-500" />
+                      <MaterialIcon name="check_circle" size={16} className="text-primary" />
                       {pacote.creditos} créditos
                     </li>
                     <li className="flex items-center gap-2 text-sm">
-                      <CheckCircle className="h-4 w-4 text-green-500" />
+                      <MaterialIcon name="check_circle" size={16} className="text-primary" />
                       Leads exclusivos
                     </li>
                     <li className="flex items-center gap-2 text-sm">
-                      <CheckCircle className="h-4 w-4 text-green-500" />
+                      <MaterialIcon name="check_circle" size={16} className="text-primary" />
                       Acesso ao WhatsApp
                     </li>
                   </ul>
@@ -119,9 +103,9 @@ export default function PortalPacotesPage() {
                     className="w-full"
                     variant={isPopular ? "default" : "outline"}
                     disabled={buying === pacote.id}
-                    onClick={() => handleBuy(pacote.id)}
+                    onClick={() => handleBuy(pacote)}
                   >
-                    {buying === pacote.id ? "Processando..." : "Comprar"}
+                    {buying === pacote.id ? "Abrindo..." : "Comprar no WhatsApp"}
                   </Button>
                 </CardFooter>
               </Card>
@@ -132,3 +116,4 @@ export default function PortalPacotesPage() {
     </div>
   );
 }
+

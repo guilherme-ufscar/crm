@@ -1,4 +1,5 @@
 import { cleanPhoneNumber, truncateText, getAreaByValue } from "./utils";
+import { SERVER_ENV } from "./server-env";
 
 interface WhatsAppMessageData {
   leadId: string;
@@ -14,7 +15,7 @@ interface WhatsAppMessageData {
  * Generates a wa.me URL with pre-filled message for client redirect
  */
 export function generateWhatsAppUrl(data: WhatsAppMessageData): string {
-  const phoneNumber = cleanPhoneNumber(process.env.WHATSAPP_NUMBER || "");
+  const phoneNumber = cleanPhoneNumber(SERVER_ENV.whatsappNumber);
   const areaLabel = getAreaByValue(data.area)?.label || data.area;
   const location = [data.cidade, data.uf].filter(Boolean).join("/");
   const resumo = truncateText(data.resumo, 250);

@@ -1,8 +1,8 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useState, useCallback } from "react";
 import { useRouter } from "next/navigation";
-import { MapPin, Clock, FileText, ShoppingCart, AlertCircle } from "lucide-react";
+import { MaterialIcon } from "@/components/ui/material-icon";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -59,7 +59,7 @@ export default function PortalLeadsPage() {
 
       if (!res.ok) {
         if (res.status === 402) {
-          alert("Créditos insuficientes. Adquira um pacote.");
+          alert("Cr�ditos insuficientes. Adquira um pacote.");
           router.push("/portal/pacotes");
           return;
         }
@@ -83,8 +83,8 @@ export default function PortalLeadsPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-bold">Leads Disponíveis</h1>
-        <p className="text-muted-foreground">Leads qualificados prontos para aquisição</p>
+        <h1 className="text-2xl font-bold">Leads Dispon�veis</h1>
+        <p className="text-muted-foreground">Leads qualificados prontos para aquisi��o</p>
       </div>
 
       {/* Filters */}
@@ -94,13 +94,13 @@ export default function PortalLeadsPage() {
           onChange={(e) => { setAreaFilter(e.target.value); setPage(1); }}
           className="h-10 rounded-md border border-input bg-background px-3 text-sm"
         >
-          <option value="">Todas as áreas</option>
+          <option value="">Todas as �reas</option>
           <option value="TRABALHISTA">Trabalhista</option>
-          <option value="PREVIDENCIARIO">Previdenciário</option>
+          <option value="PREVIDENCIARIO">Previdenci�rio</option>
           <option value="CONSUMIDOR">Consumidor</option>
-          <option value="FAMILIA">Família</option>
+          <option value="FAMILIA">Fam�lia</option>
           <option value="CRIMINAL">Criminal</option>
-          <option value="IMOVEIS">Imóveis</option>
+          <option value="IMOVEIS">Im�veis</option>
           <option value="EMPRESARIAL">Empresarial</option>
           <option value="OUTROS">Outros</option>
         </select>
@@ -113,9 +113,9 @@ export default function PortalLeadsPage() {
       ) : leads.length === 0 ? (
         <Card>
           <CardContent className="py-12 text-center">
-            <AlertCircle className="mx-auto h-10 w-10 text-muted-foreground" />
-            <p className="mt-3 text-muted-foreground">Nenhum lead disponível no momento</p>
-            <p className="text-sm text-muted-foreground">Novos leads são adicionados diariamente</p>
+            <MaterialIcon name="info" size={40} className="mx-auto text-muted-foreground" />
+            <p className="mt-3 text-muted-foreground">Nenhum lead dispon�vel no momento</p>
+            <p className="text-sm text-muted-foreground">Novos leads s�o adicionados diariamente</p>
           </CardContent>
         </Card>
       ) : (
@@ -132,14 +132,14 @@ export default function PortalLeadsPage() {
               </CardHeader>
               <CardContent className="flex flex-1 flex-col">
                 <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                  <MapPin className="h-3.5 w-3.5" />
+                  <MaterialIcon name="location_on" size={14} />
                   {lead.cidade}/{lead.uf}
                 </div>
                 <p className="mt-2 flex-1 text-sm">{lead.descricao}</p>
                 <div className="mt-3 flex flex-wrap gap-2">
                   {lead.temDocumentos && (
                     <Badge variant="outline" className="text-xs">
-                      <FileText className="mr-1 h-3 w-3" />
+                      <MaterialIcon name="description" size={12} className="mr-1" />
                       Documentos
                     </Badge>
                   )}
@@ -149,7 +149,7 @@ export default function PortalLeadsPage() {
                     </Badge>
                   )}
                   <Badge variant="outline" className="text-xs">
-                    <Clock className="mr-1 h-3 w-3" />
+                    <MaterialIcon name="schedule" size={12} className="mr-1" />
                     {new Date(lead.criadoEm).toLocaleDateString("pt-BR")}
                   </Badge>
                 </div>
@@ -158,8 +158,8 @@ export default function PortalLeadsPage() {
                   disabled={buying === lead.id}
                   onClick={() => handleBuy(lead.id)}
                 >
-                  <ShoppingCart className="mr-2 h-4 w-4" />
-                  {buying === lead.id ? "Processando..." : "Adquirir (1 crédito)"}
+                  <MaterialIcon name="shopping_cart" size={16} className="mr-2" />
+                  {buying === lead.id ? "Processando..." : "Adquirir (1 cr�dito)"}
                 </Button>
               </CardContent>
             </Card>
@@ -170,8 +170,8 @@ export default function PortalLeadsPage() {
       {totalPages > 1 && (
         <div className="flex items-center justify-center gap-2">
           <Button variant="outline" size="sm" disabled={page <= 1} onClick={() => setPage(page - 1)}>Anterior</Button>
-          <span className="text-sm text-muted-foreground">Página {page} de {totalPages}</span>
-          <Button variant="outline" size="sm" disabled={page >= totalPages} onClick={() => setPage(page + 1)}>Próxima</Button>
+          <span className="text-sm text-muted-foreground">P�gina {page} de {totalPages}</span>
+          <Button variant="outline" size="sm" disabled={page >= totalPages} onClick={() => setPage(page + 1)}>Pr�xima</Button>
         </div>
       )}
     </div>

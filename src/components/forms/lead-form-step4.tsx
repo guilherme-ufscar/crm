@@ -1,9 +1,9 @@
-"use client";
+﻿"use client";
 
 import { useFormContext } from "react-hook-form";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
-import { AlertTriangle } from "lucide-react";
+import { MaterialIcon } from "@/components/ui/material-icon";
 import type { LeadFormData } from "@/lib/validations";
 
 export function LeadFormStep4() {
@@ -52,15 +52,15 @@ export function LeadFormStep4() {
 
       {/* Warning */}
       {showWarning && (
-        <div className="rounded-lg border border-amber-200 bg-amber-50 p-4">
+        <div className="rounded-lg border border-secondary/25 bg-secondary/10 p-4">
           <div className="flex items-start gap-3">
-            <AlertTriangle className="h-5 w-5 text-amber-600 mt-0.5 shrink-0" />
+            <MaterialIcon name="warning" size={20} className="text-secondary mt-0.5 shrink-0" />
             <div>
-              <p className="text-sm font-medium text-amber-900">Atenção</p>
-              <p className="mt-1 text-sm text-amber-700">
+              <p className="text-sm font-medium text-secondary">Atenção</p>
+              <p className="mt-1 text-sm text-secondary">
                 Nossa plataforma não atende casos com advogado constituído ou processo em andamento. Se continuar, seu caso será registrado, mas não será encaminhado para atendimento através da plataforma.
               </p>
-              <p className="mt-2 text-sm text-amber-700">
+              <p className="mt-2 text-sm text-secondary">
                 Recomendamos entrar em contato diretamente com seu advogado ou procurar a Defensoria Pública.
               </p>
             </div>
@@ -112,3 +112,4 @@ export function LeadFormStep4() {
     </div>
   );
 }
+

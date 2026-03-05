@@ -1,8 +1,9 @@
-import { NextRequest, NextResponse } from "next/server";
+﻿import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { leadFormSchema } from "@/lib/validations";
 import { generateWhatsAppUrl } from "@/lib/whatsapp";
 import { rateLimit, getClientIp } from "@/lib/rate-limit";
+import { verifyTurnstileToken } from "@/lib/turnstile";
 
 const limiter = rateLimit({ interval: 60 * 1000, uniqueTokenPerInterval: 500 });
 
@@ -13,18 +14,27 @@ export async function POST(req: NextRequest) {
     await limiter.check(10, ip); // 10 per minute
   } catch {
     return NextResponse.json(
-      { error: "Muitas requisições. Tente novamente em instantes." },
+      { error: "Muitas requisi��es. Tente novamente em instantes." },
       { status: 429 }
     );
   }
 
   try {
     const body = await req.json();
+    const turnstileToken = (body.turnstileToken as string) || "";
+    const captchaOk = await verifyTurnstileToken(turnstileToken, ip);
+    if (!captchaOk) {
+      return NextResponse.json(
+        { error: "Falha na verificação do captcha. Tente novamente." },
+        { status: 400 }
+      );
+    }
+
     const parsed = leadFormSchema.safeParse(body);
 
     if (!parsed.success) {
       return NextResponse.json(
-        { error: "Dados inválidos", details: parsed.error.flatten().fieldErrors },
+        { error: "Dados inv�lidos", details: parsed.error.flatten().fieldErrors },
         { status: 400 }
       );
     }
@@ -87,7 +97,7 @@ export async function POST(req: NextRequest) {
   } catch (error) {
     console.error("Error creating lead:", error);
     return NextResponse.json(
-      { error: "Erro interno ao processar sua solicitação." },
+      { error: "Erro interno ao processar sua solicita��o." },
       { status: 500 }
     );
   }

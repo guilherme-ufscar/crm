@@ -1,16 +1,16 @@
-import { NextRequest, NextResponse } from "next/server";
+﻿import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { generateLawyerWhatsAppUrl } from "@/lib/whatsapp";
 
-// POST /api/portal/leads/[id]/adquirir — purchase a lead with credits
+// POST /api/portal/leads/[id]/adquirir � purchase a lead with credits
 export async function POST(
   req: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
   const session = await auth();
   if (!session || session.user.role !== "advogado") {
-    return NextResponse.json({ error: "Não autorizado" }, { status: 401 });
+    return NextResponse.json({ error: "N�o autorizado" }, { status: 401 });
   }
 
   const { id } = await params;
@@ -21,17 +21,17 @@ export async function POST(
     const result = await prisma.$transaction(async (tx) => {
       // Get lead
       const lead = await tx.lead.findUnique({ where: { id } });
-      if (!lead) throw new Error("Lead não encontrado");
-      if (lead.status !== "A_VENDA") throw new Error("Lead não está disponível para compra");
+      if (!lead) throw new Error("Lead n�o encontrado");
+      if (lead.status !== "A_VENDA") throw new Error("Lead n�o est� dispon�vel para compra");
 
       // Get lawyer
       const advogado = await tx.advogado.findUnique({
         where: { id: session.user.id },
       });
-      if (!advogado) throw new Error("Advogado não encontrado");
+      if (!advogado) throw new Error("Advogado n�o encontrado");
       if (!advogado.ativo) throw new Error("Conta desativada");
       if (advogado.saldoCreditos < CREDIT_COST) {
-        throw new Error("Créditos insuficientes");
+        throw new Error("Cr�ditos insuficientes");
       }
 
       // Deduct credits
@@ -56,7 +56,7 @@ export async function POST(
           advogadoId: advogado.id,
           tipo: "USO",
           quantidade: -CREDIT_COST,
-          descricao: `Aquisição do lead #${lead.id.substring(0, 8)}`,
+          descricao: `Aquisi��o do lead #${lead.id.substring(0, 8)}`,
           leadId: lead.id,
         },
       });
@@ -64,7 +64,7 @@ export async function POST(
       return updatedLead;
     });
 
-    // Generate lawyer → client WhatsApp URL
+    // Generate lawyer ? client WhatsApp URL
     const whatsappUrl = generateLawyerWhatsAppUrl({
       clienteWhatsapp: result.whatsapp,
       nomeCliente: result.nome,
@@ -90,9 +90,9 @@ export async function POST(
   } catch (error) {
     const message = error instanceof Error ? error.message : "Erro interno";
     const status =
-      message === "Lead não encontrado" ? 404 :
-      message === "Lead não está disponível para compra" ? 409 :
-      message === "Créditos insuficientes" ? 402 :
+      message === "Lead n�o encontrado" ? 404 :
+      message === "Lead n�o est� dispon�vel para compra" ? 409 :
+      message === "Cr�ditos insuficientes" ? 402 :
       message === "Conta desativada" ? 403 : 500;
 
     return NextResponse.json({ error: message }, { status });

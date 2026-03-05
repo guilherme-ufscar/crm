@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from "next/server";
+﻿import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { leadClassificacaoSchema } from "@/lib/validations";
@@ -9,7 +9,7 @@ export async function GET(
 ) {
   const session = await auth();
   if (!session || !["MASTER", "OPERADOR", "AUDITOR"].includes(session.user.role)) {
-    return NextResponse.json({ error: "Não autorizado" }, { status: 401 });
+    return NextResponse.json({ error: "N�o autorizado" }, { status: 401 });
   }
 
   const { id } = await params;
@@ -25,7 +25,7 @@ export async function GET(
   });
 
   if (!lead) {
-    return NextResponse.json({ error: "Lead não encontrado" }, { status: 404 });
+    return NextResponse.json({ error: "Lead n�o encontrado" }, { status: 404 });
   }
 
   return NextResponse.json(lead);
@@ -37,7 +37,7 @@ export async function PATCH(
 ) {
   const session = await auth();
   if (!session || !["MASTER", "OPERADOR"].includes(session.user.role)) {
-    return NextResponse.json({ error: "Não autorizado" }, { status: 401 });
+    return NextResponse.json({ error: "N�o autorizado" }, { status: 401 });
   }
 
   const { id } = await params;
@@ -48,14 +48,14 @@ export async function PATCH(
 
     if (!parsed.success) {
       return NextResponse.json(
-        { error: "Dados inválidos", details: parsed.error.flatten().fieldErrors },
+        { error: "Dados inv�lidos", details: parsed.error.flatten().fieldErrors },
         { status: 400 }
       );
     }
 
     const lead = await prisma.lead.findUnique({ where: { id } });
     if (!lead) {
-      return NextResponse.json({ error: "Lead não encontrado" }, { status: 404 });
+      return NextResponse.json({ error: "Lead n�o encontrado" }, { status: 404 });
     }
 
     const updated = await prisma.lead.update({

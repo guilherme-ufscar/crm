@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState, useCallback } from "react";
-import { Search } from "lucide-react";
+import { MaterialIcon } from "@/components/ui/material-icon";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
@@ -56,7 +56,7 @@ export default function AdminAdvogadosPage() {
       <h1 className="text-2xl font-bold">Advogados Parceiros</h1>
 
       <div className="relative max-w-md">
-        <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+        <MaterialIcon name="search" size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
         <Input
           placeholder="Buscar por nome, e-mail ou OAB..."
           value={search}

@@ -1,8 +1,8 @@
-import { Metadata } from "next";
+﻿import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Política de Privacidade",
-  description: "Saiba como a JuriLead coleta, utiliza e protege seus dados pessoais, em conformidade com a LGPD.",
+  description: "Saiba como a Conect Juris coleta, utiliza e protege seus dados pessoais, em conformidade com a LGPD.",
 };
 
 export default function PrivacidadePage() {
@@ -16,7 +16,7 @@ export default function PrivacidadePage() {
           <div>
             <h2>1. Introdução</h2>
             <p>
-              A JuriLead (&ldquo;nós&rdquo;) respeita a privacidade dos seus usuários e está comprometida com
+              A Conect Juris (&ldquo;nós&rdquo;) respeita a privacidade dos seus usuários e está comprometida com
               a proteção de dados pessoais, em conformidade com a Lei Geral de Proteção de Dados (Lei
               nº 13.709/2018 — LGPD). Esta Política descreve como coletamos, utilizamos, armazenamos e
               compartilhamos seus dados.
@@ -28,11 +28,11 @@ export default function PrivacidadePage() {
             <p>Coletamos as seguintes categorias de dados:</p>
             <ul className="mt-2">
               <li><strong>Clientes:</strong> nome, e-mail, WhatsApp (telefone), cidade, UF, área do direito,
-              nível de urgência, descrição do caso, documentos (quando fornecidos), consentimentos.</li>
+                nível de urgência, descrição do caso, documentos (quando fornecidos), consentimentos.</li>
               <li><strong>Advogados Parceiros:</strong> nome, e-mail, telefone, número OAB, UF da OAB,
-              áreas de atuação, estado, cidade, dados bancários/de pagamento, CPF/CNPJ.</li>
+                áreas de atuação, estado, cidade, dados bancários/de pagamento, CPF/CNPJ.</li>
               <li><strong>Navegação:</strong> endereço IP, tipo de navegador, páginas visitadas, parâmetros UTM,
-              cookies de sessão e analytics (Google Analytics 4).</li>
+                cookies de sessão e analytics (Google Analytics 4).</li>
             </ul>
           </div>
 
@@ -42,7 +42,7 @@ export default function PrivacidadePage() {
             <ul className="mt-2">
               <li><strong>Consentimento:</strong> envio de formulário de lead, aceite do termos e da política.</li>
               <li><strong>Execução de contrato:</strong> prestação do serviço de distribuição de leads entre
-              advogados parceiros.</li>
+                advogados parceiros.</li>
               <li><strong>Legítimo interesse:</strong> melhoria da plataforma, analytics, prevenção a fraudes.</li>
               <li><strong>Obrigação legal:</strong> cumprimento de obrigações fiscais e regulatórias.</li>
             </ul>
@@ -53,8 +53,8 @@ export default function PrivacidadePage() {
             <p>Seus dados podem ser compartilhados com:</p>
             <ul className="mt-2">
               <li><strong>Advogados Parceiros:</strong> dados do lead são disponibilizados ao advogado que
-              adquire o crédito correspondente. Os dados são mascarados até a aquisição.</li>
-              <li><strong>Processadores de pagamento:</strong> Stripe, para processamento de transações.</li>
+                adquire o crédito correspondente. Os dados são mascarados até a aquisição.</li>
+              <li><strong>Pagamentos:</strong> as compras de créditos são realizadas por atendimento offline via WhatsApp e registradas internamente no sistema.</li>
               <li><strong>Analytics:</strong> Google Analytics 4, para análise de tráfego (dados anonimizados).</li>
               <li><strong>Autoridades:</strong> quando exigido por lei ou ordem judicial.</li>
             </ul>
@@ -95,7 +95,7 @@ export default function PrivacidadePage() {
             </ul>
             <p className="mt-2">
               Para exercer seus direitos, entre em contato pelo e-mail{" "}
-              <strong>privacidade@jurilead.com.br</strong>.
+              <strong>privacidade@Conect Juris.com.br</strong>.
             </p>
           </div>
 
@@ -132,7 +132,7 @@ export default function PrivacidadePage() {
               contato com nosso Encarregado de Proteção de Dados:
             </p>
             <p className="mt-2">
-              <strong>E-mail:</strong> privacidade@jurilead.com.br
+              <strong>E-mail:</strong> privacidade@Conect Juris.com.br
             </p>
           </div>
         </div>
@@ -140,3 +140,4 @@ export default function PrivacidadePage() {
     </section>
   );
 }
+

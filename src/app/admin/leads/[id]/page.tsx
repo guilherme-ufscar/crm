@@ -1,12 +1,9 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
-import {
-  ArrowLeft, MessageCircle, MapPin, Clock,
-  FileText, Shield, User, Mail, Phone,
-} from "lucide-react";
+import { MaterialIcon } from "@/components/ui/material-icon";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -48,7 +45,7 @@ interface Lead {
 
 const statusActions = [
   { status: "RETIDO", label: "Reter (uso interno)", variant: "secondary" as const },
-  { status: "A_VENDA", label: "Colocar à venda", variant: "default" as const },
+  { status: "A_VENDA", label: "Colocar � venda", variant: "default" as const },
   { status: "BLOQUEADO", label: "Bloquear", variant: "destructive" as const },
 ];
 
@@ -104,13 +101,13 @@ export default function AdminLeadDetailPage() {
     );
   }
 
-  if (!lead) return <p>Lead não encontrado</p>;
+  if (!lead) return <p>Lead n�o encontrado</p>;
 
   return (
     <div className="space-y-6">
       <div className="flex items-center gap-3">
         <Button variant="ghost" size="icon" onClick={() => router.back()}>
-          <ArrowLeft className="h-5 w-5" />
+          <MaterialIcon name="arrow_back" size={20} />
         </Button>
         <h1 className="text-2xl font-bold">Lead: {lead.nome}</h1>
         <Badge variant={lead.status === "BLOQUEADO" ? "destructive" : lead.status === "A_VENDA" ? "success" : "secondary"}>
@@ -127,44 +124,44 @@ export default function AdminLeadDetailPage() {
             </CardHeader>
             <CardContent className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               <div className="flex items-center gap-2">
-                <User className="h-4 w-4 text-muted-foreground" />
+                <MaterialIcon name="person" size={16} className="text-muted-foreground" />
                 <div>
                   <p className="text-xs text-muted-foreground">Nome</p>
                   <p className="font-medium">{lead.nome}</p>
                 </div>
               </div>
               <div className="flex items-center gap-2">
-                <Phone className="h-4 w-4 text-muted-foreground" />
+                <MaterialIcon name="phone" size={16} className="text-muted-foreground" />
                 <div>
                   <p className="text-xs text-muted-foreground">WhatsApp</p>
                   <p className="font-medium">{lead.whatsapp}</p>
                 </div>
               </div>
               <div className="flex items-center gap-2">
-                <Mail className="h-4 w-4 text-muted-foreground" />
+                <MaterialIcon name="mail" size={16} className="text-muted-foreground" />
                 <div>
                   <p className="text-xs text-muted-foreground">E-mail</p>
-                  <p className="font-medium">{lead.email || "—"}</p>
+                  <p className="font-medium">{lead.email || "�"}</p>
                 </div>
               </div>
               <div className="flex items-center gap-2">
-                <MapPin className="h-4 w-4 text-muted-foreground" />
+                <MaterialIcon name="location_on" size={16} className="text-muted-foreground" />
                 <div>
-                  <p className="text-xs text-muted-foreground">Localização</p>
+                  <p className="text-xs text-muted-foreground">Localiza��o</p>
                   <p className="font-medium">{lead.cidade}/{lead.uf}</p>
                 </div>
               </div>
               <div className="flex items-center gap-2">
-                <FileText className="h-4 w-4 text-muted-foreground" />
+                <MaterialIcon name="description" size={16} className="text-muted-foreground" />
                 <div>
-                  <p className="text-xs text-muted-foreground">Área</p>
+                  <p className="text-xs text-muted-foreground">�rea</p>
                   <p className="font-medium">{lead.areaDireito.replace(/_/g, " ")}</p>
                 </div>
               </div>
               <div className="flex items-center gap-2">
-                <Clock className="h-4 w-4 text-muted-foreground" />
+                <MaterialIcon name="schedule" size={16} className="text-muted-foreground" />
                 <div>
-                  <p className="text-xs text-muted-foreground">Urgência</p>
+                  <p className="text-xs text-muted-foreground">Urg�ncia</p>
                   <p className="font-medium">{lead.urgencia}</p>
                 </div>
               </div>
@@ -173,15 +170,15 @@ export default function AdminLeadDetailPage() {
 
           <Card>
             <CardHeader>
-              <CardTitle className="text-base">Descrição do Caso</CardTitle>
+              <CardTitle className="text-base">Descri��o do Caso</CardTitle>
             </CardHeader>
             <CardContent>
               <p className="whitespace-pre-wrap text-sm">{lead.descricao}</p>
               <div className="mt-4 flex flex-wrap gap-2">
                 {lead.temDocumentos && <Badge variant="outline">Possui documentos</Badge>}
-                {lead.possuiAdvogado && <Badge variant="destructive">Já possui advogado</Badge>}
+                {lead.possuiAdvogado && <Badge variant="destructive">J� possui advogado</Badge>}
                 {lead.processoEmAndamento && <Badge variant="destructive">Processo em andamento</Badge>}
-                {lead.melhorHorario && <Badge variant="outline">Horário: {lead.melhorHorario}</Badge>}
+                {lead.melhorHorario && <Badge variant="outline">Hor�rio: {lead.melhorHorario}</Badge>}
               </div>
             </CardContent>
           </Card>
@@ -193,11 +190,11 @@ export default function AdminLeadDetailPage() {
             </CardHeader>
             <CardContent className="grid grid-cols-2 gap-3 text-sm sm:grid-cols-3">
               <div><p className="text-xs text-muted-foreground">Canal</p><p>{lead.canalOrigem}</p></div>
-              <div><p className="text-xs text-muted-foreground">UTM Source</p><p>{lead.utmSource || "—"}</p></div>
-              <div><p className="text-xs text-muted-foreground">UTM Medium</p><p>{lead.utmMedium || "—"}</p></div>
-              <div><p className="text-xs text-muted-foreground">UTM Campaign</p><p>{lead.utmCampaign || "—"}</p></div>
+              <div><p className="text-xs text-muted-foreground">UTM Source</p><p>{lead.utmSource || "�"}</p></div>
+              <div><p className="text-xs text-muted-foreground">UTM Medium</p><p>{lead.utmMedium || "�"}</p></div>
+              <div><p className="text-xs text-muted-foreground">UTM Campaign</p><p>{lead.utmCampaign || "�"}</p></div>
               <div><p className="text-xs text-muted-foreground">Criado em</p><p>{new Date(lead.criadoEm).toLocaleString("pt-BR")}</p></div>
-              <div><p className="text-xs text-muted-foreground">LGPD</p><p>{lead.consentimentoLGPD ? "Sim" : "Não"}</p></div>
+              <div><p className="text-xs text-muted-foreground">LGPD</p><p>{lead.consentimentoLGPD ? "Sim" : "N�o"}</p></div>
             </CardContent>
           </Card>
         </div>
@@ -207,8 +204,8 @@ export default function AdminLeadDetailPage() {
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-base">
-                <Shield className="h-4 w-4" />
-                Ações de Triagem
+                <MaterialIcon name="shield" size={16} />
+                A��es de Triagem
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
@@ -219,7 +216,7 @@ export default function AdminLeadDetailPage() {
                   onChange={(e) => setQualidade(e.target.value)}
                   className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
                 >
-                  <option value="">Não classificado</option>
+                  <option value="">N�o classificado</option>
                   <option value="QUENTE">Quente</option>
                   <option value="MORNO">Morno</option>
                   <option value="FRIO">Frio</option>
@@ -227,7 +224,7 @@ export default function AdminLeadDetailPage() {
               </div>
 
               <div className="space-y-1.5">
-                <Label>Observações internas</Label>
+                <Label>Observa��es internas</Label>
                 <Textarea
                   value={observacoes}
                   onChange={(e) => setObservacoes(e.target.value)}
@@ -261,7 +258,7 @@ export default function AdminLeadDetailPage() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <MessageCircle className="mr-2 h-4 w-4" />
+                  <MaterialIcon name="chat" size={16} className="mr-2" />
                   Abrir WhatsApp
                 </a>
               </Button>

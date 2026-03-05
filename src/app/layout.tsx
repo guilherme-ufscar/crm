@@ -1,7 +1,8 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Script from "next/script";
 import { Inter } from "next/font/google";
 import { Providers } from "@/components/providers";
+import { PUBLIC_GA_ID } from "@/lib/public-env";
 import "./globals.css";
 
 const inter = Inter({
@@ -11,8 +12,8 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: "JuriLead — Orientação Jurídica Especializada",
-    template: "%s | JuriLead",
+    default: "Conect Juris — Orientação Jurídica Especializada",
+    template: "%s | Conect Juris",
   },
   description:
     "Plataforma tecnológica que organiza informações e direciona demandas jurídicas para advogados parceiros em todo o Brasil. Envie seu caso e receba orientação especializada.",
@@ -36,12 +37,19 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR" className="scroll-smooth">
+      <head>
+        {/* Google Material Symbols for icons */}
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+        />
+      </head>
       <body className={`${inter.variable} font-sans antialiased`}>
         <Providers>{children}</Providers>
-        {process.env.NEXT_PUBLIC_GA_ID && (
+        {PUBLIC_GA_ID && (
           <>
             <Script
-              src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
+              src={`https://www.googletagmanager.com/gtag/js?id=${PUBLIC_GA_ID}`}
               strategy="afterInteractive"
             />
             <Script id="gtag-init" strategy="afterInteractive">
@@ -49,7 +57,7 @@ export default function RootLayout({
                 window.dataLayer = window.dataLayer || [];
                 function gtag(){dataLayer.push(arguments);}
                 gtag('js', new Date());
-                gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}');
+                gtag('config', '${PUBLIC_GA_ID}');
               `}
             </Script>
           </>
@@ -58,3 +66,4 @@ export default function RootLayout({
     </html>
   );
 }
+

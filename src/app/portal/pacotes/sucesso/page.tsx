@@ -1,9 +1,9 @@
-"use client";
+﻿"use client";
 
 import { Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
-import { CheckCircle } from "lucide-react";
+import { MaterialIcon } from "@/components/ui/material-icon";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 
@@ -15,8 +15,8 @@ function SucessoContent() {
     <div className="flex items-center justify-center py-20">
       <Card className="w-full max-w-md text-center">
         <CardContent className="py-12">
-          <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-green-100 text-green-600">
-            <CheckCircle className="h-8 w-8" />
+          <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-primary/10 text-primary">
+            <MaterialIcon name="check_circle" size={32} />
           </div>
           <h1 className="mt-4 text-2xl font-bold">Pagamento confirmado!</h1>
           <p className="mt-2 text-muted-foreground">
@@ -43,3 +43,4 @@ export default function PacoteSucessoPage() {
     </Suspense>
   );
 }
+

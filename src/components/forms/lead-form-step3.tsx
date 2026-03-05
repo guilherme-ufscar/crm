@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useFormContext } from "react-hook-form";
 import { Label } from "@/components/ui/label";
@@ -39,7 +39,7 @@ export function LeadFormStep3() {
           )}
           <span
             className={`text-xs ${
-              descricao.length < 50 ? "text-amber-600" : "text-green-600"
+              descricao.length < 50 ? "text-secondary" : "text-primary"
             }`}
           >
             {descricao.length}/50+
@@ -66,3 +66,4 @@ export function LeadFormStep3() {
     </div>
   );
 }
+

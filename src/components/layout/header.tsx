@@ -1,17 +1,17 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 import Link from "next/link";
-import { Menu, X, MessageCircle } from "lucide-react";
+import Image from "next/image";
+import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { WhatsAppIcon } from "@/components/ui/whatsapp-icon";
 import { cn } from "@/lib/utils";
+import { buildWhatsAppUrl } from "@/lib/public-env";
 
 const navLinks = [
-  { href: "/quem-somos", label: "Quem Somos" },
-  { href: "/como-funciona", label: "Como Funciona" },
   { href: "/areas", label: "Áreas" },
   { href: "/enviar-caso", label: "Enviar Caso" },
-  { href: "/blog", label: "Blog" },
   { href: "/advogado-parceiro", label: "Advogado Parceiro" },
   { href: "/contato", label: "Contato" },
 ];
@@ -24,10 +24,7 @@ export function Header() {
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2">
-          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary">
-            <span className="text-lg font-bold text-white">J</span>
-          </div>
-          <span className="text-xl font-bold text-foreground">JuriLead</span>
+          <Image src="/imagens/logo.svg" alt="Conect Juris" width={170} height={44} className="h-10 w-auto" priority />
         </Link>
 
         {/* Desktop Nav */}
@@ -47,11 +44,11 @@ export function Header() {
         <div className="hidden lg:flex lg:items-center lg:gap-3">
           <Button variant="whatsapp" size="sm" asChild>
             <a
-              href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || ""}`}
+              href={buildWhatsAppUrl()}
               target="_blank"
               rel="noopener noreferrer"
             >
-              <MessageCircle className="h-4 w-4" />
+              <WhatsAppIcon className="h-4 w-4" />
               Falar no WhatsApp
             </a>
           </Button>
@@ -88,12 +85,12 @@ export function Header() {
           <div className="pt-3 border-t">
             <Button variant="whatsapp" className="w-full" asChild>
               <a
-                href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || ""}`}
+                href={buildWhatsAppUrl()}
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => setIsOpen(false)}
               >
-                <MessageCircle className="h-4 w-4" />
+                <WhatsAppIcon className="h-4 w-4" />
                 Falar no WhatsApp
               </a>
             </Button>
@@ -103,3 +100,4 @@ export function Header() {
     </header>
   );
 }
+

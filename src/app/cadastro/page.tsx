@@ -1,11 +1,12 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Scale, Eye, EyeOff, CheckCircle } from "lucide-react";
+import { Eye, EyeOff, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -67,10 +68,10 @@ export default function CadastroPage() {
 
   if (success) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-slate-50 px-4">
+      <div className="flex min-h-screen items-center justify-center bg-primary/5 px-4">
         <Card className="w-full max-w-md text-center">
           <CardContent className="py-12">
-            <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-green-100 text-green-600">
+            <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-primary/10 text-primary">
               <CheckCircle className="h-7 w-7" />
             </div>
             <h2 className="mt-4 text-xl font-bold">Cadastro realizado!</h2>
@@ -87,12 +88,11 @@ export default function CadastroPage() {
   }
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-slate-50 px-4 py-12">
+    <div className="flex min-h-screen items-center justify-center bg-primary/5 px-4 py-12">
       <Card className="w-full max-w-lg">
         <CardHeader className="text-center">
           <Link href="/" className="mx-auto flex items-center gap-2 text-primary">
-            <Scale className="h-7 w-7" />
-            <span className="text-xl font-bold">JuriLead</span>
+            <Image src="/imagens/logo.svg" alt="Conect Juris" width={180} height={46} className="h-10 w-auto" priority />
           </Link>
           <CardTitle className="mt-4 text-xl">Cadastro de Advogado</CardTitle>
           <p className="text-sm text-muted-foreground">
@@ -105,21 +105,21 @@ export default function CadastroPage() {
             <div className="space-y-1.5">
               <Label htmlFor="nome">Nome completo *</Label>
               <Input id="nome" {...register("nome")} placeholder="Dr(a). Nome Completo" />
-              {errors.nome && <p className="text-sm text-red-500">{errors.nome.message}</p>}
+              {errors.nome && <p className="text-sm text-secondary">{errors.nome.message}</p>}
             </div>
 
             {/* Email */}
             <div className="space-y-1.5">
               <Label htmlFor="email">E-mail *</Label>
               <Input id="email" type="email" {...register("email")} placeholder="seu@email.com" />
-              {errors.email && <p className="text-sm text-red-500">{errors.email.message}</p>}
+              {errors.email && <p className="text-sm text-secondary">{errors.email.message}</p>}
             </div>
 
             {/* Telefone */}
             <div className="space-y-1.5">
               <Label htmlFor="telefone">Telefone/WhatsApp *</Label>
               <Input id="telefone" {...register("telefone")} placeholder="(11) 99999-9999" />
-              {errors.telefone && <p className="text-sm text-red-500">{errors.telefone.message}</p>}
+              {errors.telefone && <p className="text-sm text-secondary">{errors.telefone.message}</p>}
             </div>
 
             {/* OAB */}
@@ -127,7 +127,7 @@ export default function CadastroPage() {
               <div className="space-y-1.5">
                 <Label htmlFor="oabNumero">Nº OAB *</Label>
                 <Input id="oabNumero" {...register("oabNumero")} placeholder="123456" />
-                {errors.oabNumero && <p className="text-sm text-red-500">{errors.oabNumero.message}</p>}
+                {errors.oabNumero && <p className="text-sm text-secondary">{errors.oabNumero.message}</p>}
               </div>
               <div className="space-y-1.5">
                 <Label htmlFor="oabUf">UF OAB *</Label>
@@ -141,7 +141,7 @@ export default function CadastroPage() {
                     <option key={uf} value={uf}>{uf}</option>
                   ))}
                 </select>
-                {errors.oabUf && <p className="text-sm text-red-500">{errors.oabUf.message}</p>}
+                {errors.oabUf && <p className="text-sm text-secondary">{errors.oabUf.message}</p>}
               </div>
             </div>
 
@@ -159,12 +159,12 @@ export default function CadastroPage() {
                     <option key={uf} value={uf}>{uf}</option>
                   ))}
                 </select>
-                {errors.estado && <p className="text-sm text-red-500">{errors.estado.message}</p>}
+                {errors.estado && <p className="text-sm text-secondary">{errors.estado.message}</p>}
               </div>
               <div className="space-y-1.5">
                 <Label htmlFor="cidade">Cidade *</Label>
                 <Input id="cidade" {...register("cidade")} placeholder="São Paulo" />
-                {errors.cidade && <p className="text-sm text-red-500">{errors.cidade.message}</p>}
+                {errors.cidade && <p className="text-sm text-secondary">{errors.cidade.message}</p>}
               </div>
             </div>
 
@@ -190,7 +190,7 @@ export default function CadastroPage() {
                 ))}
               </div>
               {errors.areasAtuacao && (
-                <p className="text-sm text-red-500">{errors.areasAtuacao.message}</p>
+                <p className="text-sm text-secondary">{errors.areasAtuacao.message}</p>
               )}
             </div>
 
@@ -212,7 +212,7 @@ export default function CadastroPage() {
                   {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
                 </button>
               </div>
-              {errors.senha && <p className="text-sm text-red-500">{errors.senha.message}</p>}
+              {errors.senha && <p className="text-sm text-secondary">{errors.senha.message}</p>}
             </div>
 
             {/* Confirmar Senha */}
@@ -225,12 +225,12 @@ export default function CadastroPage() {
                 placeholder="Repita a senha"
               />
               {errors.confirmarSenha && (
-                <p className="text-sm text-red-500">{errors.confirmarSenha.message}</p>
+                <p className="text-sm text-secondary">{errors.confirmarSenha.message}</p>
               )}
             </div>
 
             {error && (
-              <div className="rounded-lg bg-red-50 p-3 text-sm text-red-600">{error}</div>
+              <div className="rounded-lg bg-secondary/10 p-3 text-sm text-secondary">{error}</div>
             )}
 
             <Button type="submit" disabled={isSubmitting} className="w-full">
@@ -251,3 +251,5 @@ export default function CadastroPage() {
     </div>
   );
 }
+
+

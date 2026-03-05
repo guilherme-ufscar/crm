@@ -1,11 +1,8 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import {
-  Inbox, Users, TrendingUp, DollarSign,
-  AlertCircle, ShoppingCart, Ban, Clock,
-} from "lucide-react";
+import { MaterialIcon } from "@/components/ui/material-icon";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { formatCurrency } from "@/lib/utils";
@@ -75,14 +72,14 @@ export default function AdminDashboardPage() {
   if (!data) return <p>Erro ao carregar dados</p>;
 
   const statCards = [
-    { label: "Leads hoje", value: data.stats.leadsHoje, icon: Clock, color: "text-blue-600" },
-    { label: "Novos (triagem)", value: data.stats.leadsNovos, icon: Inbox, color: "text-orange-600" },
-    { label: "À venda", value: data.stats.leadsAVenda, icon: ShoppingCart, color: "text-green-600" },
-    { label: "Vendidos", value: data.stats.leadsVendidos, icon: TrendingUp, color: "text-indigo-600" },
-    { label: "Bloqueados", value: data.stats.leadsBloqueados, icon: Ban, color: "text-red-600" },
-    { label: "Advogados ativos", value: data.stats.advogadosAtivos, icon: Users, color: "text-purple-600" },
-    { label: "Receita total", value: formatCurrency(data.stats.receitaTotal), icon: DollarSign, color: "text-emerald-600" },
-    { label: "Total de leads", value: data.stats.totalLeads, icon: AlertCircle, color: "text-slate-600" },
+    { label: "Leads hoje", value: data.stats.leadsHoje, icon: "schedule", color: "text-primary" },
+    { label: "Novos (triagem)", value: data.stats.leadsNovos, icon: "inbox", color: "text-orange-600" },
+    { label: "À venda", value: data.stats.leadsAVenda, icon: "shopping_cart", color: "text-primary" },
+    { label: "Vendidos", value: data.stats.leadsVendidos, icon: "trending_up", color: "text-secondary" },
+    { label: "Bloqueados", value: data.stats.leadsBloqueados, icon: "block", color: "text-secondary" },
+    { label: "Advogados ativos", value: data.stats.advogadosAtivos, icon: "group", color: "text-secondary" },
+    { label: "Receita total", value: formatCurrency(data.stats.receitaTotal), icon: "attach_money", color: "text-primary" },
+    { label: "Total de leads", value: data.stats.totalLeads, icon: "info", color: "text-secondary" },
   ];
 
   return (
@@ -91,22 +88,19 @@ export default function AdminDashboardPage() {
 
       {/* Stat cards */}
       <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
-        {statCards.map((card) => {
-          const Icon = card.icon;
-          return (
-            <Card key={card.label}>
-              <CardContent className="flex items-center gap-3 py-4">
-                <div className={`rounded-lg bg-muted p-2 ${card.color}`}>
-                  <Icon className="h-5 w-5" />
-                </div>
-                <div>
-                  <p className="text-xs text-muted-foreground">{card.label}</p>
-                  <p className="text-lg font-bold">{card.value}</p>
-                </div>
-              </CardContent>
-            </Card>
-          );
-        })}
+        {statCards.map((card) => (
+          <Card key={card.label}>
+            <CardContent className="flex items-center gap-3 py-4">
+              <div className={`rounded-lg bg-muted p-2 ${card.color}`}>
+                <MaterialIcon name={card.icon} size={20} />
+              </div>
+              <div>
+                <p className="text-xs text-muted-foreground">{card.label}</p>
+                <p className="text-lg font-bold">{card.value}</p>
+              </div>
+            </CardContent>
+          </Card>
+        ))}
       </div>
 
       {/* Leads by area */}
@@ -174,3 +168,4 @@ export default function AdminDashboardPage() {
     </div>
   );
 }
+

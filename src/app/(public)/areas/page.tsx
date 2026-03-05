@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import type { Metadata } from "next";
 import {
   Briefcase,
@@ -8,6 +8,7 @@ import {
   Scale,
   Home,
   Building,
+  Landmark,
   MoreHorizontal,
   ArrowRight,
 } from "lucide-react";
@@ -64,6 +65,12 @@ const areas = [
     desc: "Abertura de empresas, contratos, recuperação judicial, disputas societárias",
   },
   {
+    slug: "bancario",
+    label: "Direito Bancário",
+    icon: Landmark,
+    desc: "Execução bancária, excesso de cobrança, prescrição da dívida e defesa contra penhora",
+  },
+  {
     slug: "outros",
     label: "Outras Áreas",
     icon: MoreHorizontal,
@@ -75,7 +82,7 @@ export default function AreasPage() {
   return (
     <>
       {/* Hero */}
-      <section className="bg-gradient-to-br from-indigo-50 via-white to-blue-50 py-16 sm:py-24">
+      <section className="bg-gradient-to-br from-primary/10 via-background to-secondary/10 py-16 sm:py-24">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-3xl font-extrabold sm:text-4xl">
             Áreas do Direito
@@ -98,7 +105,7 @@ export default function AreasPage() {
                 <Link key={area.slug} href={`/areas/${area.slug}`}>
                   <Card className="group h-full transition-all hover:shadow-lg hover:border-primary/30">
                     <CardContent className="flex flex-col items-start gap-4 p-6">
-                      <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
                         <Icon className="h-6 w-6" />
                       </div>
                       <div>
@@ -123,10 +130,10 @@ export default function AreasPage() {
       {/* CTA */}
       <section className="bg-primary py-16">
         <div className="mx-auto max-w-3xl px-4 text-center">
-          <h2 className="text-2xl font-bold text-white">
+          <h2 className="text-2xl font-bold text-primary-foreground">
             Não sabe qual área se encaixa?
           </h2>
-          <p className="mt-3 text-indigo-100">
+          <p className="mt-3 text-primary-foreground/80">
             Envie seu caso e nossa equipe direcionará para o especialista certo.
           </p>
           <div className="mt-8">
@@ -142,3 +149,4 @@ export default function AreasPage() {
     </>
   );
 }
+

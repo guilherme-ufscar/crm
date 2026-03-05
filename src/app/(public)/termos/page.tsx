@@ -1,8 +1,8 @@
-import { Metadata } from "next";
+﻿import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Termos de Uso",
-  description: "Termos de uso da plataforma JuriLead.",
+  description: "Termos de uso da plataforma Conect Juris.",
 };
 
 export default function TermosPage() {
@@ -16,7 +16,7 @@ export default function TermosPage() {
           <div>
             <h2>1. Aceitação dos Termos</h2>
             <p>
-              Ao acessar e utilizar a plataforma JuriLead (&ldquo;Plataforma&rdquo;), você declara ter lido,
+              Ao acessar e utilizar a plataforma Conect Juris (&ldquo;Plataforma&rdquo;), você declara ter lido,
               compreendido e aceito integralmente estes Termos de Uso. Se não concordar, interrompa
               imediatamente o uso.
             </p>
@@ -27,7 +27,7 @@ export default function TermosPage() {
             <p>
               A Plataforma tem por finalidade conectar pessoas que buscam orientação ou serviço jurídico
               (&ldquo;Clientes&rdquo;) a advogados regularmente inscritos na OAB (&ldquo;Advogados Parceiros&rdquo;).
-              A JuriLead não é escritório de advocacia, não presta assessoria jurídica nem atua como
+              A Conect Juris não é escritório de advocacia, não presta assessoria jurídica nem atua como
               intermediária em litígios.
             </p>
           </div>
@@ -40,7 +40,7 @@ export default function TermosPage() {
             </p>
             <p className="mt-2">
               <strong>Advogados Parceiros:</strong> Devem possuir registro ativo na OAB, fornecer dados
-              verdadeiros e cumprir o Código de Ética e Disciplina da OAB. A JuriLead se reserva ao direito
+              verdadeiros e cumprir o Código de Ética e Disciplina da OAB. A Conect Juris se reserva ao direito
               de recusar ou cancelar cadastros que violem estes termos.
             </p>
           </div>
@@ -58,7 +58,7 @@ export default function TermosPage() {
           <div>
             <h2>5. Qualidade dos Leads</h2>
             <p>
-              A JuriLead realiza triagem interna dos leads, porém não garante a contratação de serviços
+              A Conect Juris realiza triagem interna dos leads, porém não garante a contratação de serviços
               jurídicos pelo Cliente. Leads com dados visivelmente falsos ou duplicados podem ser
               reportados para análise.
             </p>
@@ -68,14 +68,14 @@ export default function TermosPage() {
             <h2>6. Propriedade Intelectual</h2>
             <p>
               Todo o conteúdo da Plataforma (textos, layout, logomarcas, código-fonte) é de propriedade
-              da JuriLead ou de seus licenciantes, protegido pela legislação de propriedade intelectual.
+              da Conect Juris ou de seus licenciantes, protegido pela legislação de propriedade intelectual.
             </p>
           </div>
 
           <div>
             <h2>7. Limitação de Responsabilidade</h2>
             <p>
-              A JuriLead não se responsabiliza por: (i) conduta de Advogados Parceiros ou Clientes;
+              A Conect Juris não se responsabiliza por: (i) conduta de Advogados Parceiros ou Clientes;
               (ii) qualidade dos serviços jurídicos prestados; (iii) indisponibilidades momentâneas da
               Plataforma; (iv) danos indiretos ou lucros cessantes.
             </p>
@@ -93,7 +93,7 @@ export default function TermosPage() {
           <div>
             <h2>9. Rescisão</h2>
             <p>
-              A JuriLead pode suspender ou encerrar o acesso de qualquer usuário que viole estes Termos,
+              A Conect Juris pode suspender ou encerrar o acesso de qualquer usuário que viole estes Termos,
               sem aviso prévio e sem prejuízo de medidas judiciais cabíveis.
             </p>
           </div>
@@ -119,3 +119,4 @@ export default function TermosPage() {
     </section>
   );
 }
+

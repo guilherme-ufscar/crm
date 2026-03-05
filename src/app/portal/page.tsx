@@ -1,8 +1,8 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { CreditCard, Search, Briefcase, TrendingUp } from "lucide-react";
+import { MaterialIcon } from "@/components/ui/material-icon";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -48,9 +48,9 @@ export default function PortalDashboardPage() {
   if (!data) return <p>Erro ao carregar</p>;
 
   const stats = [
-    { label: "Créditos disponíveis", value: data.stats.saldoCreditos, icon: CreditCard, color: "text-emerald-600", href: "/portal/creditos" },
-    { label: "Leads disponíveis", value: data.stats.leadsDisponiveis, icon: Search, color: "text-blue-600", href: "/portal/leads" },
-    { label: "Leads adquiridos", value: data.stats.totalLeadsAdquiridos, icon: Briefcase, color: "text-indigo-600", href: "/portal/meus-leads" },
+    { label: "Créditos disponíveis", value: data.stats.saldoCreditos, icon: "credit_card", color: "text-primary", href: "/portal/creditos" },
+    { label: "Leads disponíveis", value: data.stats.leadsDisponiveis, icon: "search", color: "text-primary", href: "/portal/leads" },
+    { label: "Leads adquiridos", value: data.stats.totalLeadsAdquiridos, icon: "work", color: "text-secondary", href: "/portal/meus-leads" },
   ];
 
   return (
@@ -61,24 +61,21 @@ export default function PortalDashboardPage() {
       </div>
 
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-        {stats.map((s) => {
-          const Icon = s.icon;
-          return (
-            <Link key={s.label} href={s.href}>
-              <Card className="hover:shadow-md transition-shadow">
-                <CardContent className="flex items-center gap-4 py-5">
-                  <div className={`rounded-lg bg-muted p-3 ${s.color}`}>
-                    <Icon className="h-6 w-6" />
-                  </div>
-                  <div>
-                    <p className="text-xs text-muted-foreground">{s.label}</p>
-                    <p className="text-2xl font-bold">{s.value}</p>
-                  </div>
-                </CardContent>
-              </Card>
-            </Link>
-          );
-        })}
+        {stats.map((s) => (
+          <Link key={s.label} href={s.href}>
+            <Card className="hover:shadow-md transition-shadow">
+              <CardContent className="flex items-center gap-4 py-5">
+                <div className={`rounded-lg bg-muted p-3 ${s.color}`}>
+                  <MaterialIcon name={s.icon} size={24} />
+                </div>
+                <div>
+                  <p className="text-xs text-muted-foreground">{s.label}</p>
+                  <p className="text-2xl font-bold">{s.value}</p>
+                </div>
+              </CardContent>
+            </Card>
+          </Link>
+        ))}
       </div>
 
       {data.stats.saldoCreditos === 0 && (
@@ -135,3 +132,4 @@ export default function PortalDashboardPage() {
     </div>
   );
 }
+

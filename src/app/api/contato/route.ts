@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { contatoSchema } from "@/lib/validations";
 import { rateLimit, getClientIp } from "@/lib/rate-limit";
+import { verifyTurnstileToken } from "@/lib/turnstile";
 
 const limiter = rateLimit({ interval: 60 * 1000, uniqueTokenPerInterval: 500 });
 
@@ -18,6 +19,15 @@ export async function POST(req: NextRequest) {
 
   try {
     const body = await req.json();
+    const turnstileToken = (body.turnstileToken as string) || "";
+    const captchaOk = await verifyTurnstileToken(turnstileToken, ip);
+    if (!captchaOk) {
+      return NextResponse.json(
+        { error: "Falha na verificação do captcha. Tente novamente." },
+        { status: 400 }
+      );
+    }
+
     const parsed = contatoSchema.safeParse(body);
 
     if (!parsed.success) {

@@ -1,12 +1,12 @@
-import { NextRequest, NextResponse } from "next/server";
+﻿import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 
-// GET /api/portal/meus-leads — lawyer's purchased leads
+// GET /api/portal/meus-leads � lawyer's purchased leads
 export async function GET(req: NextRequest) {
   const session = await auth();
   if (!session || session.user.role !== "advogado") {
-    return NextResponse.json({ error: "Não autorizado" }, { status: 401 });
+    return NextResponse.json({ error: "N�o autorizado" }, { status: 401 });
   }
 
   const url = new URL(req.url);

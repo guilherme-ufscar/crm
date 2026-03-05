@@ -1,8 +1,8 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useState, useCallback } from "react";
 import Link from "next/link";
-import { MessageCircle, MapPin, Clock } from "lucide-react";
+import { MaterialIcon } from "@/components/ui/material-icon";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
@@ -49,7 +49,7 @@ export default function PortalMeusLeadsPage() {
     <div className="space-y-6">
       <div>
         <h1 className="text-2xl font-bold">Meus Leads</h1>
-        <p className="text-muted-foreground">Leads que você adquiriu</p>
+        <p className="text-muted-foreground">Leads que voc� adquiriu</p>
       </div>
 
       {loading ? (
@@ -59,9 +59,9 @@ export default function PortalMeusLeadsPage() {
       ) : leads.length === 0 ? (
         <Card>
           <CardContent className="py-12 text-center">
-            <p className="text-muted-foreground">Você ainda não adquiriu nenhum lead</p>
+            <p className="text-muted-foreground">Voc� ainda n�o adquiriu nenhum lead</p>
             <Button className="mt-4" asChild>
-              <Link href="/portal/leads">Ver leads disponíveis</Link>
+              <Link href="/portal/leads">Ver leads dispon�veis</Link>
             </Button>
           </CardContent>
         </Card>
@@ -77,11 +77,11 @@ export default function PortalMeusLeadsPage() {
                   </div>
                   <div className="mt-1 flex flex-wrap items-center gap-3 text-sm text-muted-foreground">
                     <span className="flex items-center gap-1">
-                      <MapPin className="h-3.5 w-3.5" />
+                      <MaterialIcon name="location_on" size={14} />
                       {lead.cidade}/{lead.uf}
                     </span>
                     <span className="flex items-center gap-1">
-                      <Clock className="h-3.5 w-3.5" />
+                      <MaterialIcon name="schedule" size={14} />
                       {new Date(lead.vendidoEm).toLocaleDateString("pt-BR")}
                     </span>
                   </div>
@@ -94,7 +94,7 @@ export default function PortalMeusLeadsPage() {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      <MessageCircle className="mr-1 h-4 w-4" />
+                      <MaterialIcon name="chat" size={16} className="mr-1" />
                       WhatsApp
                     </a>
                   </Button>
@@ -111,8 +111,8 @@ export default function PortalMeusLeadsPage() {
       {totalPages > 1 && (
         <div className="flex items-center justify-center gap-2">
           <Button variant="outline" size="sm" disabled={page <= 1} onClick={() => setPage(page - 1)}>Anterior</Button>
-          <span className="text-sm text-muted-foreground">Página {page} de {totalPages}</span>
-          <Button variant="outline" size="sm" disabled={page >= totalPages} onClick={() => setPage(page + 1)}>Próxima</Button>
+          <span className="text-sm text-muted-foreground">P�gina {page} de {totalPages}</span>
+          <Button variant="outline" size="sm" disabled={page >= totalPages} onClick={() => setPage(page + 1)}>Pr�xima</Button>
         </div>
       )}
     </div>

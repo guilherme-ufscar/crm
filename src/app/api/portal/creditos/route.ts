@@ -1,12 +1,12 @@
-import { NextResponse } from "next/server";
+﻿import { NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 
-// GET /api/portal/creditos — lawyer's credit info and transaction history
+// GET /api/portal/creditos � lawyer's credit info and transaction history
 export async function GET() {
   const session = await auth();
   if (!session || session.user.role !== "advogado") {
-    return NextResponse.json({ error: "Não autorizado" }, { status: 401 });
+    return NextResponse.json({ error: "N�o autorizado" }, { status: 401 });
   }
 
   const [advogado, transactions] = await Promise.all([

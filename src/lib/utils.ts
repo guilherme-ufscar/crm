@@ -1,4 +1,4 @@
-import { clsx, type ClassValue } from "clsx";
+﻿import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
 export function cn(...inputs: ClassValue[]) {
@@ -61,6 +61,7 @@ export const AREAS_DIREITO = [
   { value: "CRIMINAL", label: "Direito Criminal", slug: "criminal", icon: "Scale" },
   { value: "IMOVEIS", label: "Direito Imobiliário", slug: "imoveis", icon: "Home" },
   { value: "EMPRESARIAL", label: "Direito Empresarial", slug: "empresarial", icon: "Building" },
+  { value: "BANCARIO", label: "Direito Bancário", slug: "bancario", icon: "Scale" },
   { value: "OUTROS", label: "Outras Áreas", slug: "outros", icon: "MoreHorizontal" },
 ] as const;
 

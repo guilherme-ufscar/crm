@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useFormContext } from "react-hook-form";
 import { Label } from "@/components/ui/label";
@@ -59,7 +59,7 @@ export function LeadFormStep2() {
         />
         {errors.whatsapp && <p className="text-sm text-destructive">{errors.whatsapp.message}</p>}
         <p className="text-xs text-muted-foreground">
-          Seus dados são protegidos (LGPD) e usados apenas para contato sobre seu caso.
+          Seus dados s�o protegidos (LGPD) e usados apenas para contato sobre seu caso.
         </p>
       </div>
 
@@ -70,9 +70,9 @@ export function LeadFormStep2() {
         {errors.email && <p className="text-sm text-destructive">{errors.email.message}</p>}
       </div>
 
-      {/* Melhor horário */}
+      {/* Melhor hor�rio */}
       <div className="space-y-2">
-        <Label>Melhor horário para contato</Label>
+        <Label>Melhor hor�rio para contato</Label>
         <Select
           value={melhorHorario || "QUALQUER"}
           onValueChange={(value) => setValue("melhorHorario", value as LeadFormData["melhorHorario"])}
@@ -81,10 +81,10 @@ export function LeadFormStep2() {
             <SelectValue />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="MANHA">Manhã (8h-12h)</SelectItem>
+            <SelectItem value="MANHA">Manh� (8h-12h)</SelectItem>
             <SelectItem value="TARDE">Tarde (12h-18h)</SelectItem>
             <SelectItem value="NOITE">Noite (18h-21h)</SelectItem>
-            <SelectItem value="QUALQUER">Qualquer horário</SelectItem>
+            <SelectItem value="QUALQUER">Qualquer hor�rio</SelectItem>
           </SelectContent>
         </Select>
       </div>

@@ -1,4 +1,5 @@
 import type { NextAuthConfig } from "next-auth";
+import { SERVER_ENV } from "@/lib/server-env";
 
 /**
  * Edge-compatible auth configuration.
@@ -29,6 +30,6 @@ export const authConfig = {
     strategy: "jwt" as const,
     maxAge: 30 * 24 * 60 * 60, // 30 days
   },
-  secret: process.env.NEXTAUTH_SECRET,
+  secret: SERVER_ENV.nextAuthSecret,
   providers: [], // Providers added in auth.ts (Node.js only)
 } satisfies NextAuthConfig;

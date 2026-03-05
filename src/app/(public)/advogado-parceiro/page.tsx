@@ -1,9 +1,6 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import { Metadata } from "next";
-import {
-  TrendingUp, Clock, Filter, CreditCard,
-  ArrowRight, MessageCircle, CheckCircle,
-} from "lucide-react";
+import { MaterialIcon } from "@/components/ui/material-icon";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
 import {
@@ -13,6 +10,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { formatCurrency } from "@/lib/utils";
+import { buildWhatsAppUrl } from "@/lib/public-env";
 
 export const metadata: Metadata = {
   title: "Advogado Parceiro — Receba Leads Jurídicos Qualificados",
@@ -20,10 +18,10 @@ export const metadata: Metadata = {
 };
 
 const benefits = [
-  { icon: TrendingUp, title: "Fluxo contínuo de oportunidades", desc: "Receba leads novos todos os dias, filtrados pela sua área de atuação." },
-  { icon: Clock, title: "Economia de tempo", desc: "Pare de prospectar. Clientes com intenção real chegam até você." },
-  { icon: Filter, title: "Segmentação por área", desc: "Defina suas áreas de atuação e receba apenas leads compatíveis." },
-  { icon: CreditCard, title: "Controle por créditos", desc: "Compre pacotes e use créditos conforme sua necessidade." },
+  { icon: "trending_up", title: "Fluxo contínuo de oportunidades", desc: "Receba leads novos todos os dias, filtrados pela sua área de atuação." },
+  { icon: "schedule", title: "Economia de tempo", desc: "Pare de prospectar. Clientes com intenção real chegam até você." },
+  { icon: "filter_alt", title: "Segmentação por área", desc: "Defina suas áreas de atuação e receba apenas leads compatíveis." },
+  { icon: "credit_card", title: "Controle por créditos", desc: "Compre pacotes e use créditos conforme sua necessidade." },
 ];
 
 const pacotes = [
@@ -51,7 +49,7 @@ export default function AdvogadoParceiroPage() {
   return (
     <>
       {/* Hero */}
-      <section className="bg-gradient-to-br from-indigo-50 via-white to-blue-50 py-16 sm:py-24">
+      <section className="bg-gradient-to-br from-primary/10 via-background to-secondary/10 py-16 sm:py-24">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-3xl font-extrabold sm:text-4xl lg:text-5xl">
             Receba <span className="text-primary">oportunidades reais</span> de novos contratos
@@ -63,7 +61,7 @@ export default function AdvogadoParceiroPage() {
             <Button size="xl" asChild>
               <Link href="/cadastro">
                 Criar conta
-                <ArrowRight className="ml-2 h-5 w-5" />
+                <MaterialIcon name="arrow_forward" size={20} className="ml-2" />
               </Link>
             </Button>
             <Button size="xl" variant="outline" asChild>
@@ -78,32 +76,29 @@ export default function AdvogadoParceiroPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <h2 className="text-center text-2xl font-bold sm:text-3xl">Por que ser parceiro?</h2>
           <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {benefits.map((b) => {
-              const Icon = b.icon;
-              return (
-                <Card key={b.title} className="text-center">
-                  <CardContent className="pt-6">
-                    <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary">
-                      <Icon className="h-6 w-6" />
-                    </div>
-                    <h3 className="mt-4 font-semibold">{b.title}</h3>
-                    <p className="mt-2 text-sm text-muted-foreground">{b.desc}</p>
-                  </CardContent>
-                </Card>
-              );
-            })}
+            {benefits.map((b) => (
+              <Card key={b.title} className="text-center">
+                <CardContent className="pt-6">
+                  <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                    <MaterialIcon name={b.icon} size={24} />
+                  </div>
+                  <h3 className="mt-4 font-semibold">{b.title}</h3>
+                  <p className="mt-2 text-sm text-muted-foreground">{b.desc}</p>
+                </CardContent>
+              </Card>
+            ))}
           </div>
         </div>
       </section>
 
       {/* Como funciona */}
-      <section className="bg-slate-50 py-16">
+      <section className="bg-primary/5 py-16">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
           <h2 className="text-center text-2xl font-bold sm:text-3xl">Como funciona</h2>
           <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {steps.map((s) => (
               <div key={s.num} className="text-center">
-                <div className="mx-auto flex h-10 w-10 items-center justify-center rounded-full bg-primary text-white font-bold">
+                <div className="mx-auto flex h-10 w-10 items-center justify-center rounded-full bg-primary text-primary-foreground font-bold">
                   {s.num}
                 </div>
                 <h3 className="mt-3 font-semibold">{s.title}</h3>
@@ -127,7 +122,7 @@ export default function AdvogadoParceiroPage() {
               >
                 {p.destaque && (
                   <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                    <span className="rounded-full bg-primary px-3 py-1 text-xs font-semibold text-white">
+                    <span className="rounded-full bg-primary px-3 py-1 text-xs font-semibold text-primary-foreground">
                       Mais popular
                     </span>
                   </div>
@@ -144,19 +139,19 @@ export default function AdvogadoParceiroPage() {
                 <CardContent>
                   <ul className="space-y-2">
                     <li className="flex items-center gap-2 text-sm">
-                      <CheckCircle className="h-4 w-4 text-green-500" />
+                      <MaterialIcon name="check_circle" size={16} className="text-primary" />
                       {p.creditos} créditos
                     </li>
                     <li className="flex items-center gap-2 text-sm">
-                      <CheckCircle className="h-4 w-4 text-green-500" />
+                      <MaterialIcon name="check_circle" size={16} className="text-primary" />
                       Leads exclusivos
                     </li>
                     <li className="flex items-center gap-2 text-sm">
-                      <CheckCircle className="h-4 w-4 text-green-500" />
+                      <MaterialIcon name="check_circle" size={16} className="text-primary" />
                       Filtro por área
                     </li>
                     <li className="flex items-center gap-2 text-sm">
-                      <CheckCircle className="h-4 w-4 text-green-500" />
+                      <MaterialIcon name="check_circle" size={16} className="text-primary" />
                       Acesso ao WhatsApp do lead
                     </li>
                   </ul>
@@ -173,7 +168,7 @@ export default function AdvogadoParceiroPage() {
       </section>
 
       {/* FAQ */}
-      <section className="bg-slate-50 py-16">
+      <section className="bg-primary/5 py-16">
         <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
           <h2 className="text-center text-2xl font-bold sm:text-3xl">Perguntas Frequentes</h2>
           <Accordion type="single" collapsible className="mt-8">
@@ -190,15 +185,15 @@ export default function AdvogadoParceiroPage() {
       {/* CTA Final */}
       <section className="bg-primary py-16">
         <div className="mx-auto max-w-3xl px-4 text-center sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold text-white">Comece a receber leads hoje</h2>
-          <p className="mt-3 text-indigo-100">Crie sua conta em menos de 2 minutos</p>
+          <h2 className="text-2xl font-bold text-primary-foreground">Comece a receber leads hoje</h2>
+          <p className="mt-3 text-primary-foreground/80">Crie sua conta em menos de 2 minutos</p>
           <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
             <Button size="xl" variant="secondary" asChild>
               <Link href="/cadastro">Criar conta agora</Link>
             </Button>
             <Button size="xl" variant="whatsapp" asChild>
-              <a href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || ""}`} target="_blank" rel="noopener noreferrer">
-                <MessageCircle className="h-5 w-5" />
+              <a href={buildWhatsAppUrl()} target="_blank" rel="noopener noreferrer">
+                <MaterialIcon name="chat" size={20} />
                 Falar com nossa equipe
               </a>
             </Button>
@@ -208,3 +203,4 @@ export default function AdvogadoParceiroPage() {
     </>
   );
 }
+

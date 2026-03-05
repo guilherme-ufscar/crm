@@ -1,20 +1,23 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Metadata } from "next";
-import { Mail, MapPin, MessageCircle, Send } from "lucide-react";
+import { MaterialIcon } from "@/components/ui/material-icon";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent } from "@/components/ui/card";
 import { contatoSchema, type ContatoData } from "@/lib/validations";
+import { buildWhatsAppUrl } from "@/lib/public-env";
+import { PUBLIC_TURNSTILE_SITE_KEY } from "@/lib/public-env";
+import { TurnstileField } from "@/components/forms/turnstile-field";
 
 export default function ContatoPage() {
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
+  const [turnstileToken, setTurnstileToken] = useState("");
 
   const {
     register,
@@ -27,11 +30,15 @@ export default function ContatoPage() {
 
   async function onSubmit(data: ContatoData) {
     setError("");
+    if (PUBLIC_TURNSTILE_SITE_KEY && !turnstileToken) {
+      setError("Confirme o captcha antes de enviar.");
+      return;
+    }
     try {
       const res = await fetch("/api/contato", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+        body: JSON.stringify({ ...data, turnstileToken }),
       });
       if (!res.ok) throw new Error("Erro ao enviar mensagem");
       setSubmitted(true);
@@ -43,7 +50,7 @@ export default function ContatoPage() {
 
   return (
     <>
-      <section className="bg-gradient-to-br from-indigo-50 via-white to-blue-50 py-16">
+      <section className="bg-gradient-to-br from-primary/10 via-background to-secondary/10 py-16">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-3xl font-extrabold sm:text-4xl">Entre em Contato</h1>
           <p className="mt-3 text-lg text-muted-foreground">
@@ -60,16 +67,16 @@ export default function ContatoPage() {
               <Card>
                 <CardContent className="flex items-start gap-4 pt-6">
                   <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
-                    <MessageCircle className="h-5 w-5" />
+                    <MaterialIcon name="chat" size={20} />
                   </div>
                   <div>
                     <h3 className="font-semibold">WhatsApp</h3>
                     <p className="text-sm text-muted-foreground">Atendimento rápido</p>
                     <a
-                      href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || ""}`}
+                      href={buildWhatsAppUrl()}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="mt-1 inline-block text-sm font-medium text-green-600 hover:underline"
+                      className="mt-1 inline-block text-sm font-medium text-primary hover:underline"
                     >
                       Enviar mensagem
                     </a>
@@ -79,7 +86,7 @@ export default function ContatoPage() {
               <Card>
                 <CardContent className="flex items-start gap-4 pt-6">
                   <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
-                    <Mail className="h-5 w-5" />
+                    <MaterialIcon name="mail" size={20} />
                   </div>
                   <div>
                     <h3 className="font-semibold">E-mail</h3>
@@ -90,7 +97,7 @@ export default function ContatoPage() {
               <Card>
                 <CardContent className="flex items-start gap-4 pt-6">
                   <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
-                    <MapPin className="h-5 w-5" />
+                    <MaterialIcon name="location_on" size={20} />
                   </div>
                   <div>
                     <h3 className="font-semibold">Localização</h3>
@@ -105,8 +112,8 @@ export default function ContatoPage() {
               {submitted ? (
                 <Card>
                   <CardContent className="py-12 text-center">
-                    <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-green-100 text-green-600">
-                      <Send className="h-7 w-7" />
+                    <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-primary/10 text-primary">
+                      <MaterialIcon name="send" size={28} />
                     </div>
                     <h2 className="mt-4 text-xl font-bold">Mensagem enviada!</h2>
                     <p className="mt-2 text-muted-foreground">
@@ -126,14 +133,14 @@ export default function ContatoPage() {
                           <Label htmlFor="nome">Nome *</Label>
                           <Input id="nome" {...register("nome")} placeholder="Seu nome" />
                           {errors.nome && (
-                            <p className="text-sm text-red-500">{errors.nome.message}</p>
+                            <p className="text-sm text-secondary">{errors.nome.message}</p>
                           )}
                         </div>
                         <div className="space-y-1.5">
                           <Label htmlFor="email">E-mail *</Label>
                           <Input id="email" type="email" {...register("email")} placeholder="seu@email.com" />
                           {errors.email && (
-                            <p className="text-sm text-red-500">{errors.email.message}</p>
+                            <p className="text-sm text-secondary">{errors.email.message}</p>
                           )}
                         </div>
                       </div>
@@ -142,7 +149,7 @@ export default function ContatoPage() {
                         <Label htmlFor="assunto">Assunto *</Label>
                         <Input id="assunto" {...register("assunto")} placeholder="Qual o assunto?" />
                         {errors.assunto && (
-                          <p className="text-sm text-red-500">{errors.assunto.message}</p>
+                          <p className="text-sm text-secondary">{errors.assunto.message}</p>
                         )}
                       </div>
 
@@ -155,12 +162,14 @@ export default function ContatoPage() {
                           placeholder="Escreva sua mensagem..."
                         />
                         {errors.mensagem && (
-                          <p className="text-sm text-red-500">{errors.mensagem.message}</p>
+                          <p className="text-sm text-secondary">{errors.mensagem.message}</p>
                         )}
                       </div>
 
+                      <TurnstileField onTokenChange={setTurnstileToken} />
+
                       {error && (
-                        <div className="rounded-lg bg-red-50 p-3 text-sm text-red-600">{error}</div>
+                        <div className="rounded-lg bg-secondary/10 p-3 text-sm text-secondary">{error}</div>
                       )}
 
                       <Button type="submit" disabled={isSubmitting} className="w-full sm:w-auto">
@@ -177,3 +186,4 @@ export default function ContatoPage() {
     </>
   );
 }
+

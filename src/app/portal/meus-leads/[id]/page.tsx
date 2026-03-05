@@ -1,12 +1,9 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
-import {
-  ArrowLeft, MessageCircle, MapPin, Clock,
-  Mail, Phone, User, FileText,
-} from "lucide-react";
+import { MaterialIcon } from "@/components/ui/material-icon";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -53,7 +50,7 @@ export default function PortalLeadDetailPage() {
     );
   }
 
-  if (!lead) return <p>Lead não encontrado</p>;
+  if (!lead) return <p>Lead n�o encontrado</p>;
 
   const whatsappClean = lead.whatsapp.replace(/\D/g, "");
 
@@ -61,7 +58,7 @@ export default function PortalLeadDetailPage() {
     <div className="space-y-6">
       <div className="flex items-center gap-3">
         <Link href="/portal/meus-leads">
-          <Button variant="ghost" size="icon"><ArrowLeft className="h-5 w-5" /></Button>
+          <Button variant="ghost" size="icon"><MaterialIcon name="arrow_back" size={20} /></Button>
         </Link>
         <h1 className="text-2xl font-bold">{lead.nome}</h1>
         <Badge>{lead.areaDireito.replace(/_/g, " ")}</Badge>
@@ -76,14 +73,14 @@ export default function PortalLeadDetailPage() {
             </CardHeader>
             <CardContent className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               <div className="flex items-center gap-3">
-                <User className="h-4 w-4 text-muted-foreground" />
+                <MaterialIcon name="person" size={16} className="text-muted-foreground" />
                 <div>
                   <p className="text-xs text-muted-foreground">Nome</p>
                   <p className="font-medium">{lead.nome}</p>
                 </div>
               </div>
               <div className="flex items-center gap-3">
-                <Phone className="h-4 w-4 text-muted-foreground" />
+                <MaterialIcon name="phone" size={16} className="text-muted-foreground" />
                 <div>
                   <p className="text-xs text-muted-foreground">WhatsApp</p>
                   <p className="font-medium">{lead.whatsapp}</p>
@@ -91,7 +88,7 @@ export default function PortalLeadDetailPage() {
               </div>
               {lead.email && (
                 <div className="flex items-center gap-3">
-                  <Mail className="h-4 w-4 text-muted-foreground" />
+                  <MaterialIcon name="mail" size={16} className="text-muted-foreground" />
                   <div>
                     <p className="text-xs text-muted-foreground">E-mail</p>
                     <p className="font-medium">{lead.email}</p>
@@ -99,9 +96,9 @@ export default function PortalLeadDetailPage() {
                 </div>
               )}
               <div className="flex items-center gap-3">
-                <MapPin className="h-4 w-4 text-muted-foreground" />
+                <MaterialIcon name="location_on" size={16} className="text-muted-foreground" />
                 <div>
-                  <p className="text-xs text-muted-foreground">Localização</p>
+                  <p className="text-xs text-muted-foreground">Localiza��o</p>
                   <p className="font-medium">{lead.cidade}/{lead.uf}</p>
                 </div>
               </div>
@@ -110,18 +107,18 @@ export default function PortalLeadDetailPage() {
 
           <Card>
             <CardHeader>
-              <CardTitle className="text-base">Descrição do Caso</CardTitle>
+              <CardTitle className="text-base">Descri��o do Caso</CardTitle>
             </CardHeader>
             <CardContent>
               <p className="whitespace-pre-wrap text-sm">{lead.descricao}</p>
               <div className="mt-4 flex flex-wrap gap-2">
                 <Badge variant="outline">
-                  <Clock className="mr-1 h-3 w-3" />
-                  Urgência: {lead.urgencia}
+                  <MaterialIcon name="schedule" size={12} className="mr-1" />
+                  Urg�ncia: {lead.urgencia}
                 </Badge>
                 {lead.temDocumentos && (
                   <Badge variant="outline">
-                    <FileText className="mr-1 h-3 w-3" />
+                    <MaterialIcon name="description" size={12} className="mr-1" />
                     Possui documentos
                   </Badge>
                 )}
@@ -137,14 +134,14 @@ export default function PortalLeadDetailPage() {
             <CardContent className="pt-6 space-y-3">
               <Button variant="whatsapp" className="w-full" size="lg" asChild>
                 <a href={`https://wa.me/${whatsappClean}`} target="_blank" rel="noopener noreferrer">
-                  <MessageCircle className="mr-2 h-5 w-5" />
+                  <MaterialIcon name="chat" size={20} className="mr-2" />
                   Abrir WhatsApp
                 </a>
               </Button>
               {lead.email && (
                 <Button variant="outline" className="w-full" asChild>
                   <a href={`mailto:${lead.email}`}>
-                    <Mail className="mr-2 h-4 w-4" />
+                    <MaterialIcon name="mail" size={16} className="mr-2" />
                     Enviar E-mail
                   </a>
                 </Button>

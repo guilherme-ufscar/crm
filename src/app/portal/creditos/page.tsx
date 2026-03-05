@@ -1,7 +1,7 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useState } from "react";
-import { CreditCard, ArrowUpRight, ArrowDownRight } from "lucide-react";
+import { MaterialIcon } from "@/components/ui/material-icon";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -43,14 +43,14 @@ export default function PortalCreditosPage() {
     <div className="space-y-6">
       <h1 className="text-2xl font-bold">Créditos</h1>
 
-      <Card className="bg-gradient-to-r from-indigo-500 to-blue-600 text-white">
+      <Card className="bg-gradient-to-r from-secondary to-primary text-primary-foreground">
         <CardContent className="flex items-center justify-between py-6">
           <div>
-            <p className="text-sm text-indigo-100">Saldo atual</p>
+            <p className="text-sm text-primary-foreground/80">Saldo atual</p>
             <p className="text-4xl font-extrabold">{saldo}</p>
-            <p className="text-sm text-indigo-100">créditos disponíveis</p>
+            <p className="text-sm text-primary-foreground/80">créditos disponíveis</p>
           </div>
-          <CreditCard className="h-12 w-12 text-indigo-200" />
+          <MaterialIcon name="credit_card" size={48} className="text-primary-foreground/70" />
         </CardContent>
       </Card>
 
@@ -70,8 +70,8 @@ export default function PortalCreditosPage() {
               {transactions.map((tx) => (
                 <div key={tx.id} className="flex items-center justify-between px-4 py-3">
                   <div className="flex items-center gap-3">
-                    <div className={`rounded-lg p-2 ${tx.quantidade > 0 ? "bg-green-100 text-green-600" : "bg-red-100 text-red-600"}`}>
-                      {tx.quantidade > 0 ? <ArrowDownRight className="h-4 w-4" /> : <ArrowUpRight className="h-4 w-4" />}
+                    <div className={`rounded-lg p-2 ${tx.quantidade > 0 ? "bg-primary/10 text-primary" : "bg-secondary/10 text-secondary"}`}>
+                      {tx.quantidade > 0 ? <MaterialIcon name="south_east" size={16} /> : <MaterialIcon name="north_east" size={16} />}
                     </div>
                     <div>
                       <p className="text-sm font-medium">{tx.descricao}</p>
@@ -92,3 +92,4 @@ export default function PortalCreditosPage() {
     </div>
   );
 }
+

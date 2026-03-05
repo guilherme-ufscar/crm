@@ -1,8 +1,8 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useState, useCallback } from "react";
 import Link from "next/link";
-import { Search, Filter } from "lucide-react";
+import { MaterialIcon } from "@/components/ui/material-icon";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
@@ -30,7 +30,7 @@ interface Pagination {
 }
 
 const statusLabels: Record<string, string> = {
-  NOVO: "Novo", RETIDO: "Retido", A_VENDA: "À venda",
+  NOVO: "Novo", RETIDO: "Retido", A_VENDA: "� venda",
   VENDIDO: "Vendido", BLOQUEADO: "Bloqueado",
 };
 
@@ -40,7 +40,7 @@ const statusColors: Record<string, string> = {
 };
 
 const urgenciaLabels: Record<string, string> = {
-  URGENTE: "Urgente", ALTA: "Alta", MEDIA: "Média", BAIXA: "Baixa",
+  URGENTE: "Urgente", ALTA: "Alta", MEDIA: "M�dia", BAIXA: "Baixa",
 };
 
 export default function AdminLeadsPage() {
@@ -85,7 +85,7 @@ export default function AdminLeadsPage() {
       <Card>
         <CardContent className="flex flex-wrap items-center gap-3 py-4">
           <div className="relative flex-1 min-w-[200px]">
-            <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+            <MaterialIcon name="search" size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
             <Input
               placeholder="Buscar por nome, e-mail, telefone..."
               value={search}
@@ -101,7 +101,7 @@ export default function AdminLeadsPage() {
             <option value="">Todos os status</option>
             <option value="NOVO">Novo</option>
             <option value="RETIDO">Retido</option>
-            <option value="A_VENDA">À venda</option>
+            <option value="A_VENDA">� venda</option>
             <option value="VENDIDO">Vendido</option>
             <option value="BLOQUEADO">Bloqueado</option>
           </select>
@@ -110,18 +110,18 @@ export default function AdminLeadsPage() {
             onChange={(e) => setAreaFilter(e.target.value)}
             className="h-10 rounded-md border border-input bg-background px-3 text-sm"
           >
-            <option value="">Todas as áreas</option>
+            <option value="">Todas as �reas</option>
             <option value="TRABALHISTA">Trabalhista</option>
-            <option value="PREVIDENCIARIO">Previdenciário</option>
+            <option value="PREVIDENCIARIO">Previdenci�rio</option>
             <option value="CONSUMIDOR">Consumidor</option>
-            <option value="FAMILIA">Família</option>
+            <option value="FAMILIA">Fam�lia</option>
             <option value="CRIMINAL">Criminal</option>
-            <option value="IMOVEIS">Imóveis</option>
+            <option value="IMOVEIS">Im�veis</option>
             <option value="EMPRESARIAL">Empresarial</option>
             <option value="OUTROS">Outros</option>
           </select>
           <Button variant="outline" size="sm" onClick={() => fetchLeads()}>
-            <Filter className="mr-1 h-4 w-4" />
+            <MaterialIcon name="filter_alt" size={16} className="mr-1" />
             Filtrar
           </Button>
         </CardContent>
@@ -143,12 +143,12 @@ export default function AdminLeadsPage() {
                   <tr className="border-b bg-muted/50 text-left">
                     <th className="px-4 py-3 font-medium">Nome</th>
                     <th className="px-4 py-3 font-medium">WhatsApp</th>
-                    <th className="px-4 py-3 font-medium">Área</th>
+                    <th className="px-4 py-3 font-medium">�rea</th>
                     <th className="px-4 py-3 font-medium">Local</th>
-                    <th className="px-4 py-3 font-medium">Urgência</th>
+                    <th className="px-4 py-3 font-medium">Urg�ncia</th>
                     <th className="px-4 py-3 font-medium">Status</th>
                     <th className="px-4 py-3 font-medium">Data</th>
-                    <th className="px-4 py-3 font-medium">Ação</th>
+                    <th className="px-4 py-3 font-medium">A��o</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -197,7 +197,7 @@ export default function AdminLeadsPage() {
             Anterior
           </Button>
           <span className="text-sm text-muted-foreground">
-            Página {pagination.page} de {pagination.totalPages}
+            P�gina {pagination.page} de {pagination.totalPages}
           </span>
           <Button
             variant="outline"
@@ -205,7 +205,7 @@ export default function AdminLeadsPage() {
             disabled={pagination.page >= pagination.totalPages}
             onClick={() => fetchLeads(pagination.page + 1)}
           >
-            Próxima
+            Pr�xima
           </Button>
         </div>
       )}

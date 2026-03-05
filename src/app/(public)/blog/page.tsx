@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import { Metadata } from "next";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -43,7 +43,7 @@ const posts = [
 export default function BlogPage() {
   return (
     <>
-      <section className="bg-gradient-to-br from-indigo-50 via-white to-blue-50 py-16 sm:py-24">
+      <section className="bg-gradient-to-br from-primary/10 via-background to-secondary/10 py-16 sm:py-24">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-3xl font-extrabold sm:text-4xl">Blog</h1>
           <p className="mt-4 text-lg text-muted-foreground">
@@ -77,3 +77,4 @@ export default function BlogPage() {
     </>
   );
 }
+

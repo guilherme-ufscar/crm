@@ -1,4 +1,4 @@
-import { Suspense } from "react";
+﻿import { Suspense } from "react";
 import { Metadata } from "next";
 import { LeadForm } from "@/components/forms/lead-form";
 
@@ -29,31 +29,31 @@ export default function EnviarCasoPage() {
           {/* Sidebar */}
           <div className="hidden lg:block">
             <div className="sticky top-24 space-y-6">
-              <div className="rounded-xl border bg-slate-50 p-6">
+              <div className="rounded-xl border bg-primary/5 p-6">
                 <h3 className="font-semibold">Como funciona</h3>
                 <ol className="mt-4 space-y-3 text-sm text-muted-foreground">
                   <li className="flex gap-2">
-                    <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary text-[10px] font-bold text-white">1</span>
+                    <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary text-[10px] font-bold text-primary-foreground">1</span>
                     Preencha o formulário com os dados do caso
                   </li>
                   <li className="flex gap-2">
-                    <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary text-[10px] font-bold text-white">2</span>
+                    <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary text-[10px] font-bold text-primary-foreground">2</span>
                     Você será direcionado ao WhatsApp
                   </li>
                   <li className="flex gap-2">
-                    <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary text-[10px] font-bold text-white">3</span>
+                    <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary text-[10px] font-bold text-primary-foreground">3</span>
                     Nossa equipe organiza e classifica seu caso
                   </li>
                   <li className="flex gap-2">
-                    <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary text-[10px] font-bold text-white">4</span>
+                    <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary text-[10px] font-bold text-primary-foreground">4</span>
                     Advogado especialista entra em contato
                   </li>
                 </ol>
               </div>
 
-              <div className="rounded-xl border bg-green-50 border-green-200 p-6">
-                <h3 className="font-semibold text-green-800">Você está em boas mãos</h3>
-                <ul className="mt-3 space-y-2 text-sm text-green-700">
+              <div className="rounded-xl border bg-primary/5 border-primary/20 p-6">
+                <h3 className="font-semibold text-secondary">Você está em boas mãos</h3>
+                <ul className="mt-3 space-y-2 text-sm text-secondary">
                   <li>✓ Dados protegidos (LGPD)</li>
                   <li>✓ Advogados verificados OAB</li>
                   <li>✓ Atendimento rápido</li>
@@ -67,3 +67,4 @@ export default function EnviarCasoPage() {
     </section>
   );
 }
+
