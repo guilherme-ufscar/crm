@@ -18,6 +18,7 @@ enum AreaDireito {
   IMOVEIS
   EMPRESARIAL
   OUTROS
+  BANCARIO
 }
 
 enum Urgencia {

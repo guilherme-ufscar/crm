@@ -5,7 +5,7 @@
 export const leadStep1Schema = z.object({
   areaDireito: z.enum([
     "TRABALHISTA", "PREVIDENCIARIO", "CONSUMIDOR", "FAMILIA",
-    "CRIMINAL", "IMOVEIS", "EMPRESARIAL", "OUTROS",
+    "CRIMINAL", "IMOVEIS", "EMPRESARIAL", "OUTROS", "BANCARIO",
   ], { message: "Selecione uma �rea do direito" }),
   cidade: z.string().min(2, "Informe a cidade").max(100),
   uf: z.string().length(2, "Selecione o estado"),
@@ -64,7 +64,7 @@ export const advogadoCadastroSchema = z.object({
   areasAtuacao: z
     .array(z.enum([
       "TRABALHISTA", "PREVIDENCIARIO", "CONSUMIDOR", "FAMILIA",
-      "CRIMINAL", "IMOVEIS", "EMPRESARIAL", "OUTROS",
+      "CRIMINAL", "IMOVEIS", "EMPRESARIAL", "OUTROS", "BANCARIO",
     ]))
     .min(1, "Selecione ao menos uma �rea"),
   estado: z.string().length(2, "Selecione o estado"),
