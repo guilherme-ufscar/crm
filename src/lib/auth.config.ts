@@ -7,6 +7,8 @@ import { SERVER_ENV } from "@/lib/server-env";
  * Used by middleware.ts (which runs in the Edge Runtime).
  */
 export const authConfig = {
+  // Required behind reverse proxies (Nginx/Cloudflare) to avoid UntrustedHost in production.
+  trustHost: true,
   pages: {
     signIn: "/login",
   },
