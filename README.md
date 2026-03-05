@@ -1,12 +1,12 @@
-# JuriLead — Plataforma de Leads Jurídicos
+﻿# JuriLead â€” Plataforma de Leads JurÃ­dicos
 
-Plataforma web de captação, qualificação e distribuição/venda de leads jurídicos com três frentes: site público, painel administrativo e portal do advogado.
+Plataforma web de captaÃ§Ã£o, qualificaÃ§Ã£o e distribuiÃ§Ã£o/venda de leads jurÃ­dicos com trÃªs frentes: site pÃºblico, painel administrativo e portal do advogado.
 
-## Stack Tecnológica
+## Stack TecnolÃ³gica
 
 - **Frontend/Backend**: Next.js 16 (App Router, TypeScript, Tailwind CSS v4)
 - **ORM**: Prisma 7 + PostgreSQL
-- **Autenticação**: NextAuth.js v5 (JWT, dual Credentials providers)
+- **AutenticaÃ§Ã£o**: NextAuth.js v5 (JWT, dual Credentials providers)
 - **Pagamentos**: Stripe (Checkout Sessions + Webhooks)
 - **UI**: shadcn/ui pattern (Radix UI + CVA)
 - **Deploy**: Docker + Nginx (VPS Contabo com aaPanel)
@@ -15,43 +15,43 @@ Plataforma web de captação, qualificação e distribuição/venda de leads jur
 
 ```
 src/
-├── app/
-│   ├── (public)/           # Site público (home, áreas, blog, contato, etc.)
-│   ├── admin/              # Painel administrativo
-│   ├── portal/             # Portal do advogado
-│   ├── login/              # Login do advogado
-│   ├── cadastro/           # Cadastro do advogado
-│   └── api/                # API routes
-│       ├── admin/          # CRUD admin (leads, advogados, pacotes, logs)
-│       ├── portal/         # Portal APIs (leads, créditos, meus-leads)
-│       ├── auth/           # NextAuth + cadastro
-│       ├── stripe/         # Checkout + Webhook
-│       ├── leads/          # Criação de leads
-│       └── contato/        # Formulário de contato
-├── components/
-│   ├── ui/                 # Componentes base (button, card, input, etc.)
-│   ├── layout/             # Header, Footer, WhatsApp float
-│   └── forms/              # Formulário multi-step de leads
-├── lib/                    # Utilitários (prisma, auth, validations, stripe, etc.)
-└── types/                  # Type augmentations
+â”œâ”€â”€ app/
+â”‚   â”œâ”€â”€ (public)/           # Site pÃºblico (home, Ã¡reas, blog, contato, etc.)
+â”‚   â”œâ”€â”€ admin/              # Painel administrativo
+â”‚   â”œâ”€â”€ portal/             # Portal do advogado
+â”‚   â”œâ”€â”€ login/              # Login do advogado
+â”‚   â”œâ”€â”€ cadastro/           # Cadastro do advogado
+â”‚   â””â”€â”€ api/                # API routes
+â”‚       â”œâ”€â”€ admin/          # CRUD admin (leads, advogados, pacotes, logs)
+â”‚       â”œâ”€â”€ portal/         # Portal APIs (leads, crÃ©ditos, meus-leads)
+â”‚       â”œâ”€â”€ auth/           # NextAuth + cadastro
+â”‚       â”œâ”€â”€ stripe/         # Checkout + Webhook
+â”‚       â”œâ”€â”€ leads/          # CriaÃ§Ã£o de leads
+â”‚       â””â”€â”€ contato/        # FormulÃ¡rio de contato
+â”œâ”€â”€ components/
+â”‚   â”œâ”€â”€ ui/                 # Componentes base (button, card, input, etc.)
+â”‚   â”œâ”€â”€ layout/             # Header, Footer, WhatsApp float
+â”‚   â””â”€â”€ forms/              # FormulÃ¡rio multi-step de leads
+â”œâ”€â”€ lib/                    # UtilitÃ¡rios (prisma, auth, validations, stripe, etc.)
+â””â”€â”€ types/                  # Type augmentations
 ```
 
-## Pré-requisitos
+## PrÃ©-requisitos
 
 - Node.js 20+
 - PostgreSQL 16+
 - Conta Stripe (para pagamentos)
 
-## Instalação
+## InstalaÃ§Ã£o
 
 ```bash
-# Clonar o repositório
+# Clonar o repositÃ³rio
 cd crm
 
-# Instalar dependências
+# Instalar dependÃªncias
 npm install
 
-# Copiar variáveis de ambiente
+# Copiar variÃ¡veis de ambiente
 cp .env.example .env
 # Editar .env com suas credenciais
 
@@ -68,43 +68,47 @@ npm run db:seed
 npm run dev
 ```
 
-## Variáveis de Ambiente
+## VariÃ¡veis de Ambiente
 
-| Variável | Descrição | Exemplo |
+| VariÃ¡vel | DescriÃ§Ã£o | Exemplo |
 |----------|-----------|---------|
+| `APP_PORT` | Porta externa da aplicação no Docker (host) | `3000` |
+| `APP_INTERNAL_PORT` | Porta interna da aplicação no container | `3000` |
+| `POSTGRES_PORT` | Porta externa do PostgreSQL no Docker (host) | `5432` |
+| `POSTGRES_INTERNAL_PORT` | Porta interna do PostgreSQL no container | `5432` |
 | `DATABASE_URL` | Connection string PostgreSQL | `postgresql://user:pass@localhost:5432/crm_leads` |
-| `NEXTAUTH_SECRET` | Secret para JWT (mínimo 32 chars) | Gerar com `openssl rand -base64 32` |
-| `NEXTAUTH_URL` | URL base da aplicação | `http://localhost:3000` |
+| `NEXTAUTH_SECRET` | Secret para JWT (mÃ­nimo 32 chars) | Gerar com `openssl rand -base64 32` |
+| `NEXTAUTH_URL` | URL base da aplicaÃ§Ã£o | `http://localhost:3000` |
 | `STRIPE_SECRET_KEY` | Chave secreta Stripe | `sk_test_...` |
-| `STRIPE_PUBLISHABLE_KEY` | Chave pública Stripe | `pk_test_...` |
+| `STRIPE_PUBLISHABLE_KEY` | Chave pÃºblica Stripe | `pk_test_...` |
 | `STRIPE_WEBHOOK_SECRET` | Secret do webhook Stripe | `whsec_...` |
-| `WHATSAPP_NUMBER` | Número WhatsApp da plataforma (com DDI) | `5511999999999` |
+| `WHATSAPP_NUMBER` | NÃºmero WhatsApp da plataforma (com DDI) | `5511999999999` |
 | `NEXT_PUBLIC_GA_ID` | Google Analytics 4 ID | `G-XXXXXXXXXX` |
 
-## Scripts Disponíveis
+## Scripts DisponÃ­veis
 
 ```bash
 npm run dev          # Desenvolvimento (Turbopack)
-npm run build        # Build de produção
-npm run start        # Iniciar produção
+npm run build        # Build de produÃ§Ã£o
+npm run start        # Iniciar produÃ§Ã£o
 npm run lint         # Linting
 
-npm run db:push      # Sync schema → banco (sem migration)
+npm run db:push      # Sync schema â†’ banco (sem migration)
 npm run db:migrate   # Criar e aplicar migrations
 npm run db:seed      # Seed (admin + pacotes)
 npm run db:studio    # Prisma Studio (GUI)
 ```
 
-## Credenciais Padrão (Seed)
+## Credenciais PadrÃ£o (Seed)
 
 **Admin:**
 - Email: `admin@jurilead.com.br`
 - Senha: `admin123456`
 
 **Pacotes criados:**
-- Starter: 10 créditos — R$ 500
-- Profissional: 25 créditos — R$ 1.100
-- Premium: 50 créditos — R$ 2.000
+- Starter: 10 crÃ©ditos â€” R$ 500
+- Profissional: 25 crÃ©ditos â€” R$ 1.100
+- Premium: 50 crÃ©ditos â€” R$ 2.000
 
 ## Deploy com Docker
 
@@ -113,7 +117,7 @@ npm run db:studio    # Prisma Studio (GUI)
 docker compose up -d --build
 
 # Rodar migrations
-docker compose exec app npx prisma db push
+docker compose exec app npm run db:push
 
 # Seed
 docker compose exec app npm run db:seed
@@ -121,41 +125,44 @@ docker compose exec app npm run db:seed
 
 ## Funcionalidades Principais
 
-### Site Público
-- Landing page com formulário multi-step de 4 etapas
-- Redirecionamento para WhatsApp após envio
-- Páginas por área do direito (8 áreas)
-- Blog com artigos estáticos (SEO)
-- Páginas institucionais (Quem Somos, Como Funciona, Contato)
-- Páginas legais (Termos de Uso, Política de Privacidade — LGPD)
-- Página de captação para advogados parceiros
+### Site PÃºblico
+- Landing page com formulÃ¡rio multi-step de 4 etapas
+- Redirecionamento para WhatsApp apÃ³s envio
+- PÃ¡ginas por Ã¡rea do direito (8 Ã¡reas)
+- Blog com artigos estÃ¡ticos (SEO)
+- PÃ¡ginas institucionais (Quem Somos, Como Funciona, Contato)
+- PÃ¡ginas legais (Termos de Uso, PolÃ­tica de Privacidade â€” LGPD)
+- PÃ¡gina de captaÃ§Ã£o para advogados parceiros
 
 ### Painel Admin (`/admin`)
-- Dashboard com estatísticas em tempo real
-- Inbox de leads com filtros (status, área, qualidade, busca)
-- Triagem de leads (Reter / Colocar à Venda / Bloquear)
-- Classificação de qualidade (Quente / Morno / Frio)
-- Gestão de advogados cadastrados
-- CRUD de pacotes de créditos
+- Dashboard com estatÃ­sticas em tempo real
+- Inbox de leads com filtros (status, Ã¡rea, qualidade, busca)
+- Triagem de leads (Reter / Colocar Ã  Venda / Bloquear)
+- ClassificaÃ§Ã£o de qualidade (Quente / Morno / Frio)
+- GestÃ£o de advogados cadastrados
+- CRUD de pacotes de crÃ©ditos
 - Logs de auditoria
 
 ### Portal do Advogado (`/portal`)
-- Dashboard com saldo de créditos e leads disponíveis
+- Dashboard com saldo de crÃ©ditos e leads disponÃ­veis
 - Marketplace de leads (dados mascarados)
-- Aquisição de leads com créditos (1 crédito/lead)
-- Contato com cliente via WhatsApp após compra
-- Histórico de leads adquiridos
-- Compra de pacotes de créditos via Stripe
-- Histórico de transações de créditos
+- AquisiÃ§Ã£o de leads com crÃ©ditos (1 crÃ©dito/lead)
+- Contato com cliente via WhatsApp apÃ³s compra
+- HistÃ³rico de leads adquiridos
+- Compra de pacotes de crÃ©ditos via Stripe
+- HistÃ³rico de transaÃ§Ãµes de crÃ©ditos
 
-### Segurança
-- Rate limiting em todas as rotas públicas
-- Proteção de rotas via middleware NextAuth
+### SeguranÃ§a
+- Rate limiting em todas as rotas pÃºblicas
+- ProteÃ§Ã£o de rotas via middleware NextAuth
 - Roles de admin (MASTER, OPERADOR, AUDITOR)
 - Hash de senhas com bcrypt (12 rounds)
-- Consentimento LGPD obrigatório
-- Headers de segurança (CSP, HSTS, etc.)
+- Consentimento LGPD obrigatÃ³rio
+- Headers de seguranÃ§a (CSP, HSTS, etc.)
 
-## Licença
+## LicenÃ§a
 
-Projeto proprietário. Todos os direitos reservados.
+Projeto proprietÃ¡rio. Todos os direitos reservados.
+
+
+

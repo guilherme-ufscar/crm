@@ -14,25 +14,25 @@ const steps = [
   {
     icon: Send,
     title: "1. Envie seu caso",
-    desc: "Preencha nosso formulario simples com a area do direito, seus dados e uma descricao do que aconteceu. Leva poucos minutos e e gratuito.",
+    desc: "Preencha nosso formulário simples com a área do direito, seus dados e uma descrição do que aconteceu. Leva poucos minutos e é gratuito.",
     color: "bg-primary/10 text-primary",
   },
   {
     icon: Search,
-    title: "2. Organizamos as informacoes",
-    desc: "Nossa equipe recebe seu caso, organiza as informacoes e classifica de acordo com a area e a complexidade.",
+    title: "2. Organizamos as informações",
+    desc: "Nossa equipe recebe seu caso, organiza as informações e classifica de acordo com a área e a complexidade.",
     color: "bg-primary/10 text-primary",
   },
   {
     icon: UserCheck,
     title: "3. Direcionamos para advogado parceiro",
-    desc: "Com base na area e na regiao, seu caso e direcionado a um advogado parceiro especializado e inscrito na OAB.",
+    desc: "Com base na área e na região, seu caso é direcionado a um advogado parceiro especializado e inscrito na OAB.",
     color: "bg-primary/10 text-primary",
   },
   {
     icon: MessageCircle,
     title: "4. O profissional entra em contato",
-    desc: "Voce recebe o contato do advogado parceiro diretamente pelo WhatsApp para avancar com seu atendimento.",
+    desc: "Você recebe o contato do advogado parceiro diretamente pelo WhatsApp para avançar com seu atendimento.",
     color: "bg-primary/10 text-primary",
   },
 ];
@@ -46,7 +46,7 @@ export default function ComoFuncionaPage() {
             <div className="text-center lg:text-left">
               <h1 className="text-3xl font-extrabold sm:text-4xl">Como Funciona</h1>
               <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto lg:mx-0">
-                Em 4 passos simples, conectamos voce ao advogado certo para o seu caso
+                Em 4 passos simples, conectamos você ao advogado certo para o seu caso
               </p>
             </div>
             <div className="flex justify-center lg:justify-end">
@@ -82,7 +82,7 @@ export default function ComoFuncionaPage() {
       <section className="bg-primary py-16">
         <div className="mx-auto max-w-3xl px-4 text-center sm:px-6 lg:px-8">
           <h2 className="text-2xl font-bold text-primary-foreground">Pronto para enviar seu caso?</h2>
-          <p className="mt-3 text-primary-foreground/80">E rapido, gratuito e sem compromisso</p>
+          <p className="mt-3 text-primary-foreground/80">É rápido, gratuito e sem compromisso</p>
           <Button size="xl" variant="secondary" className="mt-8" asChild>
             <Link href="/enviar-caso">
               Enviar meu caso

@@ -27,44 +27,44 @@ import {
 } from "@/components/ui/accordion";
 
 const areas = [
-  { slug: "trabalhista", label: "Trabalhista", icon: Briefcase, desc: "Demissao, rescisao, horas extras, assedio e direitos do trabalhador" },
-  { slug: "previdenciario", label: "Previdenciario (INSS)", icon: Shield, desc: "Aposentadoria, auxilio-doenca, BPC/LOAS e beneficios negados" },
-  { slug: "consumidor", label: "Consumidor", icon: ShoppingBag, desc: "Cobrancas indevidas, produtos com defeito, propaganda enganosa" },
-  { slug: "familia", label: "Direito de Familia", icon: Users, desc: "Divorcio, pensao alimenticia, guarda de filhos" },
+  { slug: "trabalhista", label: "Trabalhista", icon: Briefcase, desc: "Demissão, rescisão, horas extras, assédio e direitos do trabalhador" },
+  { slug: "previdenciario", label: "Previdenciário (INSS)", icon: Shield, desc: "Aposentadoria, auxílio-doença, BPC/LOAS e benefícios negados" },
+  { slug: "consumidor", label: "Consumidor", icon: ShoppingBag, desc: "Cobranças indevidas, produtos com defeito, propaganda enganosa" },
+  { slug: "familia", label: "Direito de Família", icon: Users, desc: "Divórcio, pensão alimentícia, guarda de filhos" },
   { slug: "criminal", label: "Direito Criminal", icon: Scale, desc: "Defesa criminal, processos penais, habeas corpus" },
-  { slug: "imoveis", label: "Direito Imobiliario", icon: Home, desc: "Compra e venda, locacao, usucapiao, inventario de imoveis" },
-  { slug: "empresarial", label: "Direito Empresarial", icon: Building, desc: "Abertura de empresa, contratos, recuperacao judicial" },
-  { slug: "bancario", label: "Direito Bancario", icon: Landmark, desc: "Execucao bancaria, excesso de cobranca, prescricao da divida e defesa contra penhora" },
-  { slug: "outros", label: "Outras Areas", icon: MoreHorizontal, desc: "Outras questoes juridicas que nao se encaixam nas categorias acima" },
+  { slug: "imoveis", label: "Direito Imobiliário", icon: Home, desc: "Compra e venda, locação, usucapião, inventário de imóveis" },
+  { slug: "empresarial", label: "Direito Empresarial", icon: Building, desc: "Abertura de empresa, contratos, recuperação judicial" },
+  { slug: "bancario", label: "Direito Bancário", icon: Landmark, desc: "Execução bancária, excesso de cobrança, prescrição da dívida e defesa contra penhora" },
+  { slug: "outros", label: "Outras Áreas", icon: MoreHorizontal, desc: "Outras questões jurídicas que não se encaixam nas categorias acima" },
 ];
 
 const steps = [
-  { num: 1, title: "Envie seu caso", desc: "Preencha um formulario rapido com os detalhes da sua situacao juridica." },
-  { num: 2, title: "Organizamos as informacoes", desc: "Estruturamos e classificamos seu caso para direciona-lo corretamente." },
-  { num: 3, title: "Direcionamos para advogado parceiro", desc: "Seu caso e encaminhado a um profissional especializado na area." },
+  { num: 1, title: "Envie seu caso", desc: "Preencha um formulário rápido com os detalhes da sua situação jurídica." },
+  { num: 2, title: "Organizamos as informações", desc: "Estruturamos e classificamos seu caso para direcioná-lo corretamente." },
+  { num: 3, title: "Direcionamos para advogado parceiro", desc: "Seu caso é encaminhado a um profissional especializado na área." },
   { num: 4, title: "O profissional entra em contato", desc: "Receba atendimento personalizado diretamente pelo WhatsApp." },
 ];
 
 const faqs = [
   {
-    q: "A plataforma e um escritorio de advocacia?",
-    a: "Nao. A Conect Juris e uma plataforma tecnologica de intermediacao. Os servicos advocaticios sao prestados por advogados parceiros devidamente inscritos na OAB.",
+    q: "A plataforma é um escritório de advocacia?",
+    a: "Não. A Conect Juris é uma plataforma tecnológica de intermediação. Os serviços advocatícios são prestados por advogados parceiros devidamente inscritos na OAB.",
   },
   {
-    q: "O atendimento e gratuito?",
-    a: "O envio do seu caso pela plataforma e gratuito. Os honorarios pelo servico juridico sao definidos diretamente entre voce e o advogado parceiro.",
+    q: "O atendimento é gratuito?",
+    a: "O envio do seu caso pela plataforma é gratuito. Os honorários pelo serviço jurídico são definidos diretamente entre você e o advogado parceiro.",
   },
   {
-    q: "Voces garantem ganho de causa?",
-    a: "Nao. Nenhuma plataforma ou advogado pode garantir resultados em processos juridicos. O que garantimos e o direcionamento para profissionais qualificados.",
+    q: "Vocês garantem ganho de causa?",
+    a: "Não. Nenhuma plataforma ou advogado pode garantir resultados em processos jurídicos. O que garantimos é o direcionamento para profissionais qualificados.",
   },
   {
-    q: "Quem sera responsavel pelo meu caso?",
-    a: "O advogado parceiro que aceitar seu caso sera o responsavel tecnico. Todos os profissionais sao verificados e possuem registro na OAB.",
+    q: "Quem será responsável pelo meu caso?",
+    a: "O advogado parceiro que aceitar seu caso será o responsável técnico. Todos os profissionais são verificados e possuem registro na OAB.",
   },
   {
-    q: "Posso usar a plataforma se ja tenho advogado?",
-    a: "Se voce ja possui advogado constituido ou processo em andamento, recomendamos que entre em contato diretamente com seu profissional. Nossa plataforma nao atende esses casos.",
+    q: "Posso usar a plataforma se já tenho advogado?",
+    a: "Se você já possui advogado constituído ou processo em andamento, recomendamos que entre em contato diretamente com seu profissional. Nossa plataforma não atende esses casos.",
   },
 ];
 
@@ -100,7 +100,7 @@ export default function HomePage() {
               </div>
             </div>
             <div className="flex justify-center lg:justify-end">
-              <Image src="/imagens/Law firm-amico.webp" alt="Ilustracao juridica" width={520} height={520} className="h-auto w-full max-w-sm" priority />
+              <Image src="/imagens/Law firm-amico.webp" alt="Ilustração jurídica" width={520} height={520} className="h-auto w-full max-w-sm" priority />
             </div>
           </div>
         </div>
@@ -194,7 +194,7 @@ export default function HomePage() {
             </div>
             </div>
             <div className="flex justify-center lg:justify-end">
-              <Image src="/imagens/Law firm-bro.webp" alt="Equipe juridica" width={520} height={520} className="h-auto w-full max-w-sm" />
+              <Image src="/imagens/Law firm-bro.webp" alt="Equipe jurídica" width={520} height={520} className="h-auto w-full max-w-sm" />
             </div>
           </div>
         </div>
@@ -222,7 +222,7 @@ export default function HomePage() {
               <div>
                 <h3 className="font-semibold text-secondary">Aviso Importante</h3>
                 <p className="mt-1 text-sm text-secondary">
-                  A plataforma Conect Juris atua como <strong>intermediadora tecnologica</strong> e nao presta diretamente servicos advocaticios. A responsabilidade tecnica e do advogado contratado. <strong>Nenhum resultado e garantido.</strong> Nao atendemos casos com advogado constituido ou processo em curso.
+                  A plataforma Conect Juris atua como <strong>intermediadora tecnológica</strong> e não presta diretamente serviços advocatícios. A responsabilidade técnica é do advogado contratado. <strong>Nenhum resultado é garantido.</strong> Não atendemos casos com advogado constituído ou processo em curso.
                 </p>
               </div>
             </div>
@@ -232,7 +232,7 @@ export default function HomePage() {
 
       <section className="bg-primary py-16 sm:py-20">
         <div className="mx-auto max-w-3xl px-4 text-center sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold text-primary-foreground sm:text-3xl">Pronto para resolver sua situacao juridica?</h2>
+          <h2 className="text-2xl font-bold text-primary-foreground sm:text-3xl">Pronto para resolver sua situação jurídica?</h2>
           <p className="mt-4 text-lg text-primary-foreground/80">Envie seu caso agora e receba atendimento de um profissional especializado.</p>
           <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
             <Button size="xl" variant="secondary" asChild>
