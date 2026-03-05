@@ -12,6 +12,7 @@ import {
   Building,
   ShoppingBag,
   Scale,
+  Landmark,
   MoreHorizontal,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -33,6 +34,7 @@ const areas = [
   { slug: "criminal", label: "Direito Criminal", icon: Scale, desc: "Defesa criminal, processos penais, habeas corpus" },
   { slug: "imoveis", label: "Direito Imobiliario", icon: Home, desc: "Compra e venda, locacao, usucapiao, inventario de imoveis" },
   { slug: "empresarial", label: "Direito Empresarial", icon: Building, desc: "Abertura de empresa, contratos, recuperacao judicial" },
+  { slug: "bancario", label: "Direito Bancario", icon: Landmark, desc: "Execucao bancaria, excesso de cobranca, prescricao da divida e defesa contra penhora" },
   { slug: "outros", label: "Outras Areas", icon: MoreHorizontal, desc: "Outras questoes juridicas que nao se encaixam nas categorias acima" },
 ];
 

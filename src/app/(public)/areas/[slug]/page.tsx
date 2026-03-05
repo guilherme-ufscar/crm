@@ -27,219 +27,219 @@ interface AreaData {
 const areasData: AreaData[] = [
   {
     slug: "trabalhista", value: "TRABALHISTA", label: "Trabalhista", icon: "Briefcase",
-    headline: "Direito Trabalhista � Proteja seus direitos como trabalhador",
-    description: "Se voc� foi demitido injustamente, n�o recebeu suas verbas rescis�rias corretamente, sofre ass�dio no trabalho ou tem qualquer problema na rela��o de emprego, podemos direcionar seu caso para um advogado especialista.",
+    headline: "Direito Trabalhista - Proteja seus direitos como trabalhador",
+    description: "Se voce foi demitido injustamente, nao recebeu suas verbas rescisorias corretamente, sofre assedio no trabalho ou tem qualquer problema na relacao de emprego, podemos direcionar seu caso para um advogado especialista.",
     examples: [
-      "Demiss�o sem justa causa � verbas rescis�rias",
-      "Horas extras n�o pagas",
-      "Ass�dio moral ou sexual no trabalho",
+      "Demissao sem justa causa e verbas rescisorias",
+      "Horas extras nao pagas",
+      "Assedio moral ou sexual no trabalho",
       "Acidente de trabalho",
-      "Desvio ou ac�mulo de fun��o",
-      "Reconhecimento de v�nculo empregat�cio",
-      "FGTS n�o depositado",
+      "Desvio ou acumulo de funcao",
+      "Reconhecimento de vinculo empregaticio",
+      "FGTS nao depositado",
     ],
     checklist: [
-      "Voc� trabalhou com carteira assinada?",
-      "Recebeu todas as verbas na rescis�o?",
+      "Voce trabalhou com carteira assinada?",
+      "Recebeu todas as verbas na rescisao?",
       "Tem contracheques ou comprovantes?",
-      "H� testemunhas da situa��o?",
+      "Ha testemunhas da situacao?",
     ],
     faqs: [
-      { q: "Qual o prazo para entrar com a��o trabalhista?", a: "Voc� tem at� 2 anos ap�s a sa�da do emprego para ajuizar a a��o, podendo reclamar direitos dos �ltimos 5 anos de trabalho." },
-      { q: "Preciso de advogado para reclama��o trabalhista?", a: "Embora n�o seja obrigat�rio no primeiro grau, � altamente recomendado ter um advogado especializado para garantir seus direitos." },
+      { q: "Qual o prazo para entrar com acao trabalhista?", a: "Voce tem ate 2 anos apos a saida do emprego para ajuizar a acao, podendo reclamar direitos dos ultimos 5 anos de trabalho." },
+      { q: "Preciso de advogado para reclamacao trabalhista?", a: "Embora nao seja obrigatorio no primeiro grau, e altamente recomendado ter um advogado especializado para garantir seus direitos." },
     ],
   },
   {
-    slug: "previdenciario", value: "PREVIDENCIARIO", label: "Previdenci�rio (INSS)", icon: "Shield",
-    headline: "Direito Previdenci�rio � Garanta seus benef�cios do INSS",
-    description: "Se seu benef�cio foi negado pelo INSS, se voc� precisa de aposentadoria, aux�lio-doen�a, BPC/LOAS ou qualquer outro benef�cio previdenci�rio, temos advogados parceiros especializados prontos para ajudar.",
+    slug: "previdenciario", value: "PREVIDENCIARIO", label: "Previdenciario (INSS)", icon: "Shield",
+    headline: "Direito Previdenciario - Garanta seus beneficios do INSS",
+    description: "Se seu beneficio foi negado pelo INSS, se voce precisa de aposentadoria, auxilio-doenca, BPC/LOAS ou qualquer outro beneficio previdenciario, temos advogados parceiros especializados prontos para ajudar.",
     examples: [
-      "Aposentadoria por idade ou tempo de contribui��o",
-      "Aux�lio-doen�a negado",
-      "BPC/LOAS (Benef�cio de Presta��o Continuada)",
+      "Aposentadoria por idade ou tempo de contribuicao",
+      "Auxilio-doenca negado",
+      "BPC/LOAS (Beneficio de Prestacao Continuada)",
       "Aposentadoria especial",
-      "Pens�o por morte",
-      "Revis�o de benef�cio",
-      "Aux�lio-acidente",
+      "Pensao por morte",
+      "Revisao de beneficio",
+      "Auxilio-acidente",
     ],
     checklist: [
-      "Voc� j� deu entrada no INSS?",
+      "Voce ja deu entrada no INSS?",
       "Recebeu carta de indeferimento?",
-      "Tem laudos m�dicos recentes?",
+      "Tem laudos medicos recentes?",
       "Possui CNIS ou carteira de trabalho?",
     ],
     faqs: [
-      { q: "O INSS negou meu benef�cio, o que fazer?", a: "Voc� pode recorrer administrativamente ou judicialmente. Um advogado previdenciarista pode analisar seu caso e indicar o melhor caminho." },
-      { q: "Quanto tempo demora um processo contra o INSS?", a: "Depende do caso, mas a��es judiciais costumam levar de 6 meses a 2 anos em m�dia." },
+      { q: "O INSS negou meu beneficio, o que fazer?", a: "Voce pode recorrer administrativamente ou judicialmente. Um advogado previdenciarista pode analisar seu caso e indicar o melhor caminho." },
+      { q: "Quanto tempo demora um processo contra o INSS?", a: "Depende do caso, mas acoes judiciais costumam levar de 6 meses a 2 anos em media." },
     ],
   },
   {
     slug: "consumidor", value: "CONSUMIDOR", label: "Consumidor", icon: "ShoppingBag",
-    headline: "Direito do Consumidor � Defenda-se contra abusos",
-    description: "Cobran�as indevidas, produtos com defeito, propaganda enganosa, negativa��o indevida ou qualquer viola��o dos seus direitos como consumidor. Conectamos voc� ao advogado certo.",
+    headline: "Direito do Consumidor - Defenda-se contra abusos",
+    description: "Cobrancas indevidas, produtos com defeito, propaganda enganosa, negativacao indevida ou qualquer violacao dos seus direitos como consumidor. Conectamos voce ao advogado certo.",
     examples: [
-      "Cobran�a indevida ou abusiva",
-      "Produto com defeito ou v�cio",
+      "Cobranca indevida ou abusiva",
+      "Produto com defeito ou vicio",
       "Propaganda enganosa",
-      "Negativa��o indevida (SPC/Serasa)",
+      "Negativacao indevida (SPC/Serasa)",
       "Cancelamento de contrato abusivo",
-      "Falha na presta��o de servi�o",
+      "Falha na prestacao de servico",
     ],
     checklist: [
-      "Voc� tem o comprovante de compra/contrato?",
-      "J� tentou resolver diretamente com a empresa?",
+      "Voce tem o comprovante de compra/contrato?",
+      "Ja tentou resolver diretamente com a empresa?",
       "Tem prints ou registros de atendimento?",
       "Foi negativado indevidamente?",
     ],
     faqs: [
-      { q: "Posso processar uma empresa por cobran�a indevida?", a: "Sim. O C�digo de Defesa do Consumidor prev� a devolu��o em dobro do valor cobrado indevidamente, al�m de indeniza��o por danos morais quando aplic�vel." },
+      { q: "Posso processar uma empresa por cobranca indevida?", a: "Sim. O Codigo de Defesa do Consumidor preve a devolucao em dobro do valor cobrado indevidamente, alem de indenizacao por danos morais quando aplicavel." },
     ],
   },
   {
-    slug: "familia", value: "FAMILIA", label: "Direito de Fam�lia", icon: "Users",
-    headline: "Direito de Fam�lia � Resolva quest�es familiares",
-    description: "Div�rcio, pens�o aliment�cia, guarda de filhos, invent�rio, uni�o est�vel. Quest�es familiares requerem sensibilidade e conhecimento especializado.",
+    slug: "familia", value: "FAMILIA", label: "Direito de Familia", icon: "Users",
+    headline: "Direito de Familia - Resolva questoes familiares",
+    description: "Divorcio, pensao alimenticia, guarda de filhos, inventario, uniao estavel. Questoes familiares requerem sensibilidade e conhecimento especializado.",
     examples: [
-      "Div�rcio consensual ou litigioso",
-      "Pens�o aliment�cia (fixa��o ou revis�o)",
+      "Divorcio consensual ou litigioso",
+      "Pensao alimenticia (fixacao ou revisao)",
       "Guarda de filhos",
-      "Regulamenta��o de visitas",
-      "Invent�rio e partilha de bens",
-      "Reconhecimento de uni�o est�vel",
+      "Regulamentacao de visitas",
+      "Inventario e partilha de bens",
+      "Reconhecimento de uniao estavel",
     ],
     checklist: [
-      "H� acordo entre as partes?",
+      "Ha acordo entre as partes?",
       "Existem filhos menores?",
-      "H� bens a serem partilhados?",
-      "Conhece a renda do(a) ex-c�njuge?",
+      "Ha bens a serem partilhados?",
+      "Conhece a renda do(a) ex-conjuge?",
     ],
     faqs: [
-      { q: "Quanto tempo demora um div�rcio?", a: "O div�rcio consensual pode ser feito em cart�rio em poucos dias. O litigioso depende da complexidade, podendo levar meses." },
+      { q: "Quanto tempo demora um divorcio?", a: "O divorcio consensual pode ser feito em cartorio em poucos dias. O litigioso depende da complexidade, podendo levar meses." },
     ],
   },
   {
     slug: "criminal", value: "CRIMINAL", label: "Direito Criminal", icon: "Scale",
-    headline: "Direito Criminal � Defesa penal especializada",
-    description: "Defesa criminal em processos penais, inqu�ritos policiais, habeas corpus, revis�o criminal. Advogados criminalistas prontos para garantir seus direitos constitucionais.",
+    headline: "Direito Criminal - Defesa penal especializada",
+    description: "Defesa criminal em processos penais, inqueritos policiais, habeas corpus, revisao criminal. Advogados criminalistas prontos para garantir seus direitos constitucionais.",
     examples: [
       "Defesa em processos criminais",
       "Habeas corpus",
-      "Inqu�rito policial",
-      "Liberdade provis�ria / fian�a",
-      "Revis�o criminal",
-      "Execu��o penal e progress�o de regime",
+      "Inquerito policial",
+      "Liberdade provisoria / fianca",
+      "Revisao criminal",
+      "Execucao penal e progressao de regime",
     ],
     checklist: [
-      "H� boletim de ocorr�ncia registrado?",
-      "Existe inqu�rito ou processo em andamento?",
-      "Voc� foi citado ou intimado?",
-      "H� testemunhas ou provas a seu favor?",
+      "Ha boletim de ocorrencia registrado?",
+      "Existe inquerito ou processo em andamento?",
+      "Voce foi citado ou intimado?",
+      "Ha testemunhas ou provas a seu favor?",
     ],
     faqs: [
-      { q: "Preciso de advogado para depor na delegacia?", a: "Sim. Todo cidad�o tem direito de ser acompanhado por advogado em depoimentos e interrogat�rios. � altamente recomendado." },
+      { q: "Preciso de advogado para depor na delegacia?", a: "Sim. Todo cidadao tem direito de ser acompanhado por advogado em depoimentos e interrogatorios. E altamente recomendado." },
     ],
   },
   {
-    slug: "imoveis", value: "IMOVEIS", label: "Direito Imobili�rio", icon: "Home",
-    headline: "Direito Imobili�rio � Proteja seu patrim�nio",
-    description: "Compra e venda de im�veis, problemas com construtoras, loca��o, usucapi�o, regulariza��o de im�veis. Advogados especializados em quest�es imobili�rias.",
+    slug: "imoveis", value: "IMOVEIS", label: "Direito Imobiliario", icon: "Home",
+    headline: "Direito Imobiliario - Proteja seu patrimonio",
+    description: "Compra e venda de imoveis, problemas com construtoras, locacao, usucapiao, regularizacao de imoveis. Advogados especializados em questoes imobiliarias.",
     examples: [
-      "Compra e venda de im�vel � problemas no contrato",
-      "Atraso na entrega do im�vel (construtora)",
-      "Usucapi�o",
-      "Despejo e cobran�a de alugu�is",
-      "Regulariza��o de im�vel",
-      "V�cios construtivos",
+      "Compra e venda de imovel e problemas no contrato",
+      "Atraso na entrega do imovel (construtora)",
+      "Usucapiao",
+      "Despejo e cobranca de alugueis",
+      "Regularizacao de imovel",
+      "Vicios construtivos",
     ],
     checklist: [
-      "Voc� tem o contrato de compra/venda ou loca��o?",
-      "H� registro do im�vel em cart�rio?",
+      "Voce tem o contrato de compra/venda ou locacao?",
+      "Ha registro do imovel em cartorio?",
       "Existem documentos que comprovem posse?",
-      "Houve vistoria ou laudo t�cnico?",
+      "Houve vistoria ou laudo tecnico?",
     ],
     faqs: [
-      { q: "A construtora atrasou meu im�vel, tenho direito a indeniza��o?", a: "Sim. O atraso na entrega pode gerar indeniza��o por danos materiais e morais, al�m do pagamento de alugu�is pelo per�odo de atraso." },
+      { q: "A construtora atrasou meu imovel, tenho direito a indenizacao?", a: "Sim. O atraso na entrega pode gerar indenizacao por danos materiais e morais, alem do pagamento de alugueis pelo periodo de atraso." },
     ],
   },
   {
     slug: "empresarial", value: "EMPRESARIAL", label: "Direito Empresarial", icon: "Building",
-    headline: "Direito Empresarial � Solu��es para o seu neg�cio",
-    description: "Abertura e fechamento de empresas, contratos empresariais, recupera��o judicial, disputas societ�rias. Suporte jur�dico para empreendedores e empresas.",
+    headline: "Direito Empresarial - Solucoes para o seu negocio",
+    description: "Abertura e fechamento de empresas, contratos empresariais, recuperacao judicial, disputas societarias. Suporte juridico para empreendedores e empresas.",
     examples: [
       "Abertura e registro de empresa",
-      "Contrato social e altera��es societ�rias",
-      "Recupera��o judicial e fal�ncia",
-      "Disputas entre s�cios",
-      "Contratos comerciais e de presta��o de servi�os",
-      "Propriedade intelectual � marcas e patentes",
+      "Contrato social e alteracoes societarias",
+      "Recuperacao judicial e falencia",
+      "Disputas entre socios",
+      "Contratos comerciais e de prestacao de servicos",
+      "Propriedade intelectual e marcas e patentes",
     ],
     checklist: [
-      "Voc� tem contrato social da empresa?",
-      "H� disputa entre s�cios?",
-      "A empresa est� endividada?",
-      "Existem contratos em lit�gio?",
+      "Voce tem contrato social da empresa?",
+      "Ha disputa entre socios?",
+      "A empresa esta endividada?",
+      "Existem contratos em litigio?",
     ],
     faqs: [
-      { q: "Posso ser responsabilizado pessoalmente pelas d�vidas da empresa?", a: "Depende do tipo societ�rio e das circunst�ncias. Em empresas limitadas, a responsabilidade � geralmente restrita ao capital social, salvo em casos de fraude ou confus�o patrimonial." },
+      { q: "Posso ser responsabilizado pessoalmente pelas dividas da empresa?", a: "Depende do tipo societario e das circunstancias. Em empresas limitadas, a responsabilidade e geralmente restrita ao capital social, salvo em casos de fraude ou confusao patrimonial." },
     ],
   },
   {
-    slug: "bancario", value: "BANCARIO", label: "Direito Bancário", icon: "Scale",
-    headline: "Direito Bancário - Possibilidades de defesa no processo de execução bancária",
-    description: "Existem várias formas de se defender contra uma execução bancária. Um advogado especializado pode avaliar o caso e definir a melhor estratégia para reduzir impactos e proteger seus direitos.",
+    slug: "bancario", value: "BANCARIO", label: "Direito Bancario", icon: "Scale",
+    headline: "Direito Bancario - Possibilidades de defesa no processo de execucao bancaria",
+    description: "Existem varias formas de defesa no processo de execucao bancaria, como excesso de execucao, prescricao da divida, nulidade do titulo e medidas para desbloqueio de contas e protecao de bens essenciais.",
     examples: [
-      "Excesso de execução",
-      "Prescrição da dívida",
-      "Inexistência ou nulidade do título",
-      "Desbloqueio de contas bancárias",
+      "Excesso de execucao",
+      "Prescricao da divida",
+      "Inexistencia ou nulidade do titulo",
+      "Desbloqueio de contas bancarias",
       "Impenhorabilidade de bens essenciais",
-      "Restrição de penhora sobre salário, aposentadoria ou pensão",
+      "Restricao de penhora sobre salario, aposentadoria ou pensao",
     ],
     checklist: [
-      "O valor cobrado está maior do que o realmente devido?",
-      "A dívida pode estar prescrita pelo tempo de cobrança?",
-      "O contrato ou título possui cláusulas abusivas?",
-      "Houve bloqueio de conta, salário, aposentadoria ou pensão?",
+      "O valor cobrado esta maior do que o realmente devido?",
+      "A divida pode estar prescrita pelo tempo de cobranca?",
+      "O contrato ou titulo possui clausulas abusivas?",
+      "Houve bloqueio de conta, salario, aposentadoria ou pensao?",
     ],
     faqs: [
       {
-        q: "Excesso de execução pode reduzir a dívida?",
-        a: "Sim. Se houver cobrança acima do valor realmente devido, por erros de juros, correção monetária ou encargos indevidos, o juiz pode reconhecer o excesso e reduzir a dívida.",
+        q: "Excesso de execucao pode reduzir a divida?",
+        a: "Sim. Se houver cobranca acima do valor realmente devido, por erros de juros, correcao monetaria ou encargos indevidos, o juiz pode reconhecer o excesso e reduzir a divida.",
       },
       {
-        q: "Prescrição da dívida impede a cobrança judicial?",
-        a: "Dependendo da natureza do crédito e do prazo legal aplicável, a dívida pode estar prescrita. Nesses casos, o banco pode perder o direito de cobrar judicialmente.",
+        q: "Prescricao da divida impede a cobranca judicial?",
+        a: "Dependendo da natureza do credito e do prazo legal aplicavel, a divida pode estar prescrita. Nesses casos, o banco pode perder o direito de cobrar judicialmente.",
       },
       {
-        q: "Posso questionar o contrato usado na execução?",
-        a: "Sim. Se o título ou contrato tiver nulidades ou cláusulas abusivas, é possível discutir a validade da base da execução.",
+        q: "Posso questionar o contrato usado na execucao?",
+        a: "Sim. Se o titulo ou contrato tiver nulidades ou clausulas abusivas, e possivel discutir a validade da base da execucao.",
       },
       {
-        q: "Como funciona a proteção contra penhora de bens e contas?",
-        a: "É possível pedir desbloqueio e proteger bens essenciais à subsistência, além de discutir limites de penhora sobre salário, aposentadoria e pensão de valor mínimo.",
+        q: "Como funciona a protecao contra penhora de bens e contas?",
+        a: "Em muitos casos, e possivel pedir o desbloqueio de contas e proteger bens essenciais a subsistencia. Tambem ha limites para penhora sobre salario, aposentadoria e pensao de valor minimo.",
       },
     ],
   },
   {
-    slug: "outros", value: "OUTROS", label: "Outras �reas", icon: "MoreHorizontal",
-    headline: "Outras �reas do Direito � Encontre orienta��o",
-    description: "Sua quest�o jur�dica n�o se encaixa nas categorias principais? Sem problema. Envie seu caso e direcionaremos para o profissional mais adequado.",
+    slug: "outros", value: "OUTROS", label: "Outras Areas", icon: "MoreHorizontal",
+    headline: "Outras Areas do Direito - Encontre orientacao",
+    description: "Sua questao juridica nao se encaixa nas categorias principais? Sem problema. Envie seu caso e direcionaremos para o profissional mais adequado.",
     examples: [
       "Direito administrativo",
-      "Direito tribut�rio",
+      "Direito tributario",
       "Direito ambiental",
       "Direito digital e internet",
-      "Direito de sa�de � planos e SUS",
+      "Direito de saude e planos e SUS",
       "Direito militar",
-      "Direito banc�rio",
+      "Direito bancario",
     ],
     checklist: [
-      "Descreva seu caso com o m�ximo de detalhes",
-      "Informe a �rea que mais se aproxima",
-      "Re�na documentos relacionados",
+      "Descreva seu caso com o maximo de detalhes",
+      "Informe a area que mais se aproxima",
+      "Reuna documentos relacionados",
     ],
     faqs: [
-      { q: "Como saber qual �rea do direito meu caso se encaixa?", a: "N�o se preocupe. Ao descrever seu caso, nossa equipe direcionar� para o profissional mais adequado, mesmo que voc� n�o saiba a �rea espec�fica." },
+      { q: "Como saber qual area do direito meu caso se encaixa?", a: "Nao se preocupe. Ao descrever seu caso, nossa equipe direcionara para o profissional mais adequado, mesmo que voce nao saiba a area especifica." },
     ],
   },
 ];
@@ -251,9 +251,9 @@ export function generateStaticParams() {
 export function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   return params.then(({ slug }) => {
     const area = areasData.find((a) => a.slug === slug);
-    if (!area) return { title: "�rea n�o encontrada" };
+    if (!area) return { title: "Area nao encontrada" };
     return {
-      title: `${area.label} � Orienta��o Jur�dica Especializada`,
+      title: `${area.label} - Orientacao Juridica Especializada`,
       description: area.description,
     };
   });
@@ -305,7 +305,7 @@ export default async function AreaPage({ params }: { params: Promise<{ slug: str
       {/* Checklist */}
       <section className="bg-primary/5 py-16">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold">Perguntas r�pidas para avaliar seu caso</h2>
+          <h2 className="text-2xl font-bold">Perguntas rapidas para avaliar seu caso</h2>
           <div className="mt-6 space-y-3">
             {area.checklist.map((item, i) => (
               <Card key={i}>
@@ -325,7 +325,7 @@ export default async function AreaPage({ params }: { params: Promise<{ slug: str
       {area.faqs.length > 0 && (
         <section className="py-16">
           <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-            <h2 className="text-2xl font-bold text-center">Perguntas Frequentes � {area.label}</h2>
+            <h2 className="text-2xl font-bold text-center">Perguntas Frequentes - {area.label}</h2>
             <div className="mt-8 space-y-4">
               {area.faqs.map((faq, i) => (
                 <Card key={i}>
@@ -347,7 +347,7 @@ export default async function AreaPage({ params }: { params: Promise<{ slug: str
             Tem um caso de {area.label}?
           </h2>
           <p className="mt-3 text-white/80">
-            Envie agora e receba orientação de um advogado especialista
+            Envie agora e receba orientacao de um advogado especialista
           </p>
           <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
             <Button size="xl" variant="secondary" asChild>
