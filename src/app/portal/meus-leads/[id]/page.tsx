@@ -50,7 +50,7 @@ export default function PortalLeadDetailPage() {
     );
   }
 
-  if (!lead) return <p>Lead n�o encontrado</p>;
+  if (!lead) return <p>Lead não encontrado</p>;
 
   const whatsappClean = lead.whatsapp.replace(/\D/g, "");
 
@@ -98,7 +98,7 @@ export default function PortalLeadDetailPage() {
               <div className="flex items-center gap-3">
                 <MaterialIcon name="location_on" size={16} className="text-muted-foreground" />
                 <div>
-                  <p className="text-xs text-muted-foreground">Localiza��o</p>
+                  <p className="text-xs text-muted-foreground">Localização</p>
                   <p className="font-medium">{lead.cidade}/{lead.uf}</p>
                 </div>
               </div>
@@ -107,14 +107,14 @@ export default function PortalLeadDetailPage() {
 
           <Card>
             <CardHeader>
-              <CardTitle className="text-base">Descri��o do Caso</CardTitle>
+              <CardTitle className="text-base">Descrição do Caso</CardTitle>
             </CardHeader>
             <CardContent>
               <p className="whitespace-pre-wrap text-sm">{lead.descricao}</p>
               <div className="mt-4 flex flex-wrap gap-2">
                 <Badge variant="outline">
                   <MaterialIcon name="schedule" size={12} className="mr-1" />
-                  Urg�ncia: {lead.urgencia}
+                  Urgência: {lead.urgencia}
                 </Badge>
                 {lead.temDocumentos && (
                   <Badge variant="outline">
@@ -166,3 +166,4 @@ export default function PortalLeadDetailPage() {
     </div>
   );
 }
+

@@ -5,7 +5,7 @@ import { prisma } from "@/lib/prisma";
 export async function GET() {
   const session = await auth();
   if (!session || !["MASTER", "AUDITOR"].includes(session.user.role)) {
-    return NextResponse.json({ error: "N�o autorizado" }, { status: 401 });
+    return NextResponse.json({ error: "Não autorizado" }, { status: 401 });
   }
 
   const logs = await prisma.auditLog.findMany({
@@ -20,3 +20,4 @@ export async function GET() {
 
   return NextResponse.json(logs);
 }
+

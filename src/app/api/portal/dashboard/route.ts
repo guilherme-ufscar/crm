@@ -2,11 +2,11 @@
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 
-// GET /api/portal/dashboard � lawyer's dashboard data
+// GET /api/portal/dashboard - lawyer's dashboard data
 export async function GET() {
   const session = await auth();
   if (!session || session.user.role !== "advogado") {
-    return NextResponse.json({ error: "N�o autorizado" }, { status: 401 });
+    return NextResponse.json({ error: "Não autorizado" }, { status: 401 });
   }
 
   const advogadoId = session.user.id;
@@ -55,3 +55,4 @@ export async function GET() {
     recentLeads,
   });
 }
+

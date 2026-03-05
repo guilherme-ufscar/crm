@@ -52,7 +52,7 @@ export default function AdminLogsPage() {
                   <tr className="border-b bg-muted/50 text-left">
                     <th className="px-4 py-3 font-medium">Data</th>
                     <th className="px-4 py-3 font-medium">Admin</th>
-                    <th className="px-4 py-3 font-medium">A��o</th>
+                    <th className="px-4 py-3 font-medium">Ação</th>
                     <th className="px-4 py-3 font-medium">Entidade</th>
                     <th className="px-4 py-3 font-medium">Detalhes</th>
                   </tr>
@@ -71,7 +71,7 @@ export default function AdminLogsPage() {
                         {log.entidade} ({log.entidadeId.substring(0, 8)}...)
                       </td>
                       <td className="px-4 py-3 max-w-xs truncate text-muted-foreground">
-                        {log.detalhes || "�"}
+                        {log.detalhes || "-"}
                       </td>
                     </tr>
                   ))}
@@ -84,3 +84,4 @@ export default function AdminLogsPage() {
     </div>
   );
 }
+

@@ -6,7 +6,7 @@ import { pacoteSchema } from "@/lib/validations";
 export async function GET() {
   const session = await auth();
   if (!session || !["MASTER", "OPERADOR", "AUDITOR"].includes(session.user.role)) {
-    return NextResponse.json({ error: "N�o autorizado" }, { status: 401 });
+    return NextResponse.json({ error: "Não autorizado" }, { status: 401 });
   }
 
   const pacotes = await prisma.pacote.findMany({
@@ -19,7 +19,7 @@ export async function GET() {
 export async function POST(req: NextRequest) {
   const session = await auth();
   if (!session || session.user.role !== "MASTER") {
-    return NextResponse.json({ error: "N�o autorizado" }, { status: 401 });
+    return NextResponse.json({ error: "Não autorizado" }, { status: 401 });
   }
 
   try {
@@ -28,7 +28,7 @@ export async function POST(req: NextRequest) {
 
     if (!parsed.success) {
       return NextResponse.json(
-        { error: "Dados inv�lidos", details: parsed.error.flatten().fieldErrors },
+        { error: "Dados inválidos", details: parsed.error.flatten().fieldErrors },
         { status: 400 }
       );
     }
@@ -49,3 +49,4 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Erro interno" }, { status: 500 });
   }
 }
+

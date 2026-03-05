@@ -2,11 +2,11 @@
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 
-// GET /api/portal/leads � available leads for purchase (masked data)
+// GET /api/portal/leads - available leads for purchase (masked data)
 export async function GET(req: NextRequest) {
   const session = await auth();
   if (!session || session.user.role !== "advogado") {
-    return NextResponse.json({ error: "N�o autorizado" }, { status: 401 });
+    return NextResponse.json({ error: "Não autorizado" }, { status: 401 });
   }
 
   const url = new URL(req.url);
@@ -22,7 +22,7 @@ export async function GET(req: NextRequest) {
   });
 
   if (!advogado) {
-    return NextResponse.json({ error: "Advogado n�o encontrado" }, { status: 404 });
+    return NextResponse.json({ error: "Advogado não encontrado" }, { status: 404 });
   }
 
   const where: Record<string, unknown> = {
@@ -45,7 +45,7 @@ export async function GET(req: NextRequest) {
       skip: (page - 1) * limit,
       take: limit,
       select: {
-        // Masked data � no name, no whatsapp, no email
+        // Masked data - no name, no whatsapp, no email
         id: true,
         areaDireito: true,
         cidade: true,
@@ -71,3 +71,4 @@ export async function GET(req: NextRequest) {
     pagination: { page, limit, total, totalPages: Math.ceil(total / limit) },
   });
 }
+

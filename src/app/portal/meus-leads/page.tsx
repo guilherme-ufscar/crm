@@ -49,7 +49,7 @@ export default function PortalMeusLeadsPage() {
     <div className="space-y-6">
       <div>
         <h1 className="text-2xl font-bold">Meus Leads</h1>
-        <p className="text-muted-foreground">Leads que voc� adquiriu</p>
+        <p className="text-muted-foreground">Leads que você adquiriu</p>
       </div>
 
       {loading ? (
@@ -59,9 +59,9 @@ export default function PortalMeusLeadsPage() {
       ) : leads.length === 0 ? (
         <Card>
           <CardContent className="py-12 text-center">
-            <p className="text-muted-foreground">Voc� ainda n�o adquiriu nenhum lead</p>
+            <p className="text-muted-foreground">Você ainda não adquiriu nenhum lead</p>
             <Button className="mt-4" asChild>
-              <Link href="/portal/leads">Ver leads dispon�veis</Link>
+              <Link href="/portal/leads">Ver leads disponíveis</Link>
             </Button>
           </CardContent>
         </Card>
@@ -111,10 +111,11 @@ export default function PortalMeusLeadsPage() {
       {totalPages > 1 && (
         <div className="flex items-center justify-center gap-2">
           <Button variant="outline" size="sm" disabled={page <= 1} onClick={() => setPage(page - 1)}>Anterior</Button>
-          <span className="text-sm text-muted-foreground">P�gina {page} de {totalPages}</span>
-          <Button variant="outline" size="sm" disabled={page >= totalPages} onClick={() => setPage(page + 1)}>Pr�xima</Button>
+          <span className="text-sm text-muted-foreground">Página {page} de {totalPages}</span>
+          <Button variant="outline" size="sm" disabled={page >= totalPages} onClick={() => setPage(page + 1)}>Próxima</Button>
         </div>
       )}
     </div>
   );
 }
+

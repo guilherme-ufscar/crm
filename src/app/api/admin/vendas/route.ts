@@ -5,7 +5,7 @@ import { prisma } from "@/lib/prisma";
 export async function POST(req: NextRequest) {
     const session = await auth();
     if (!session || !["MASTER", "OPERADOR"].includes(session.user.role)) {
-        return NextResponse.json({ error: "N�o autorizado" }, { status: 401 });
+        return NextResponse.json({ error: "Não autorizado" }, { status: 401 });
     }
 
     try {
@@ -14,7 +14,7 @@ export async function POST(req: NextRequest) {
 
         if (!advogadoId || !quantidadeLeads || quantidadeLeads < 1) {
             return NextResponse.json(
-                { error: "Dados inv�lidos. Informe o advogado e a quantidade de leads." },
+                { error: "Dados inválidos. Informe o advogado e a quantidade de leads." },
                 { status: 400 }
             );
         }
@@ -26,7 +26,7 @@ export async function POST(req: NextRequest) {
 
         if (!advogado) {
             return NextResponse.json(
-                { error: "Advogado n�o encontrado." },
+                { error: "Advogado não encontrado." },
                 { status: 404 }
             );
         }
@@ -76,7 +76,7 @@ export async function POST(req: NextRequest) {
                 advogadoId,
                 tipo: "COMPRA",
                 quantidade: quantidadeLeads,
-                descricao: `Venda offline � ${quantidadeLeads} leads`,
+                descricao: `Venda offline - ${quantidadeLeads} leads`,
                 orderId: order.id,
             },
         });
@@ -120,7 +120,7 @@ export async function POST(req: NextRequest) {
 export async function GET(req: NextRequest) {
     const session = await auth();
     if (!session || !["MASTER", "OPERADOR", "AUDITOR"].includes(session.user.role)) {
-        return NextResponse.json({ error: "N�o autorizado" }, { status: 401 });
+        return NextResponse.json({ error: "Não autorizado" }, { status: 401 });
     }
 
     const url = new URL(req.url);
@@ -155,3 +155,4 @@ export async function GET(req: NextRequest) {
         pagination: { page, limit, total, totalPages: Math.ceil(total / limit) },
     });
 }
+

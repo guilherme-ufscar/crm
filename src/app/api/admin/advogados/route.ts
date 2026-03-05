@@ -5,7 +5,7 @@ import { prisma } from "@/lib/prisma";
 export async function GET(req: NextRequest) {
   const session = await auth();
   if (!session || !["MASTER", "OPERADOR", "AUDITOR"].includes(session.user.role)) {
-    return NextResponse.json({ error: "N�o autorizado" }, { status: 401 });
+    return NextResponse.json({ error: "Não autorizado" }, { status: 401 });
   }
 
   const url = new URL(req.url);
@@ -54,3 +54,4 @@ export async function GET(req: NextRequest) {
     pagination: { page, limit, total, totalPages: Math.ceil(total / limit) },
   });
 }
+

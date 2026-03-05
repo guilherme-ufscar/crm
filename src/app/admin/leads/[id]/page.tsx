@@ -45,7 +45,7 @@ interface Lead {
 
 const statusActions = [
   { status: "RETIDO", label: "Reter (uso interno)", variant: "secondary" as const },
-  { status: "A_VENDA", label: "Colocar � venda", variant: "default" as const },
+  { status: "A_VENDA", label: "Colocar à venda", variant: "default" as const },
   { status: "BLOQUEADO", label: "Bloquear", variant: "destructive" as const },
 ];
 
@@ -101,7 +101,7 @@ export default function AdminLeadDetailPage() {
     );
   }
 
-  if (!lead) return <p>Lead n�o encontrado</p>;
+  if (!lead) return <p>Lead não encontrado</p>;
 
   return (
     <div className="space-y-6">
@@ -141,27 +141,27 @@ export default function AdminLeadDetailPage() {
                 <MaterialIcon name="mail" size={16} className="text-muted-foreground" />
                 <div>
                   <p className="text-xs text-muted-foreground">E-mail</p>
-                  <p className="font-medium">{lead.email || "�"}</p>
+                  <p className="font-medium">{lead.email || "-"}</p>
                 </div>
               </div>
               <div className="flex items-center gap-2">
                 <MaterialIcon name="location_on" size={16} className="text-muted-foreground" />
                 <div>
-                  <p className="text-xs text-muted-foreground">Localiza��o</p>
+                  <p className="text-xs text-muted-foreground">Localização</p>
                   <p className="font-medium">{lead.cidade}/{lead.uf}</p>
                 </div>
               </div>
               <div className="flex items-center gap-2">
                 <MaterialIcon name="description" size={16} className="text-muted-foreground" />
                 <div>
-                  <p className="text-xs text-muted-foreground">�rea</p>
+                  <p className="text-xs text-muted-foreground">Área</p>
                   <p className="font-medium">{lead.areaDireito.replace(/_/g, " ")}</p>
                 </div>
               </div>
               <div className="flex items-center gap-2">
                 <MaterialIcon name="schedule" size={16} className="text-muted-foreground" />
                 <div>
-                  <p className="text-xs text-muted-foreground">Urg�ncia</p>
+                  <p className="text-xs text-muted-foreground">Urgência</p>
                   <p className="font-medium">{lead.urgencia}</p>
                 </div>
               </div>
@@ -170,15 +170,15 @@ export default function AdminLeadDetailPage() {
 
           <Card>
             <CardHeader>
-              <CardTitle className="text-base">Descri��o do Caso</CardTitle>
+              <CardTitle className="text-base">Descrição do Caso</CardTitle>
             </CardHeader>
             <CardContent>
               <p className="whitespace-pre-wrap text-sm">{lead.descricao}</p>
               <div className="mt-4 flex flex-wrap gap-2">
                 {lead.temDocumentos && <Badge variant="outline">Possui documentos</Badge>}
-                {lead.possuiAdvogado && <Badge variant="destructive">J� possui advogado</Badge>}
+                {lead.possuiAdvogado && <Badge variant="destructive">Já possui advogado</Badge>}
                 {lead.processoEmAndamento && <Badge variant="destructive">Processo em andamento</Badge>}
-                {lead.melhorHorario && <Badge variant="outline">Hor�rio: {lead.melhorHorario}</Badge>}
+                {lead.melhorHorario && <Badge variant="outline">Horário: {lead.melhorHorario}</Badge>}
               </div>
             </CardContent>
           </Card>
@@ -190,11 +190,11 @@ export default function AdminLeadDetailPage() {
             </CardHeader>
             <CardContent className="grid grid-cols-2 gap-3 text-sm sm:grid-cols-3">
               <div><p className="text-xs text-muted-foreground">Canal</p><p>{lead.canalOrigem}</p></div>
-              <div><p className="text-xs text-muted-foreground">UTM Source</p><p>{lead.utmSource || "�"}</p></div>
-              <div><p className="text-xs text-muted-foreground">UTM Medium</p><p>{lead.utmMedium || "�"}</p></div>
-              <div><p className="text-xs text-muted-foreground">UTM Campaign</p><p>{lead.utmCampaign || "�"}</p></div>
+              <div><p className="text-xs text-muted-foreground">UTM Source</p><p>{lead.utmSource || "-"}</p></div>
+              <div><p className="text-xs text-muted-foreground">UTM Medium</p><p>{lead.utmMedium || "-"}</p></div>
+              <div><p className="text-xs text-muted-foreground">UTM Campaign</p><p>{lead.utmCampaign || "-"}</p></div>
               <div><p className="text-xs text-muted-foreground">Criado em</p><p>{new Date(lead.criadoEm).toLocaleString("pt-BR")}</p></div>
-              <div><p className="text-xs text-muted-foreground">LGPD</p><p>{lead.consentimentoLGPD ? "Sim" : "N�o"}</p></div>
+              <div><p className="text-xs text-muted-foreground">LGPD</p><p>{lead.consentimentoLGPD ? "Sim" : "Não"}</p></div>
             </CardContent>
           </Card>
         </div>
@@ -205,7 +205,7 @@ export default function AdminLeadDetailPage() {
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-base">
                 <MaterialIcon name="shield" size={16} />
-                A��es de Triagem
+                Ações de Triagem
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
@@ -216,7 +216,7 @@ export default function AdminLeadDetailPage() {
                   onChange={(e) => setQualidade(e.target.value)}
                   className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
                 >
-                  <option value="">N�o classificado</option>
+                  <option value="">Não classificado</option>
                   <option value="QUENTE">Quente</option>
                   <option value="MORNO">Morno</option>
                   <option value="FRIO">Frio</option>
@@ -224,7 +224,7 @@ export default function AdminLeadDetailPage() {
               </div>
 
               <div className="space-y-1.5">
-                <Label>Observa��es internas</Label>
+                <Label>Observações internas</Label>
                 <Textarea
                   value={observacoes}
                   onChange={(e) => setObservacoes(e.target.value)}
@@ -283,3 +283,4 @@ export default function AdminLeadDetailPage() {
     </div>
   );
 }
+

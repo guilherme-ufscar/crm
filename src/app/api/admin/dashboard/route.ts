@@ -5,7 +5,7 @@ import { prisma } from "@/lib/prisma";
 export async function GET(req: NextRequest) {
   const session = await auth();
   if (!session || !["MASTER", "OPERADOR", "AUDITOR"].includes(session.user.role)) {
-    return NextResponse.json({ error: "N�o autorizado" }, { status: 401 });
+    return NextResponse.json({ error: "Não autorizado" }, { status: 401 });
   }
 
   // Dashboard stats
@@ -82,3 +82,4 @@ export async function GET(req: NextRequest) {
     recentLeads,
   });
 }
+

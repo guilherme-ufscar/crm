@@ -82,16 +82,16 @@ export default function AdminPacotesPage() {
                 <Input value={form.nome} onChange={(e) => setForm({ ...form, nome: e.target.value })} placeholder="Starter" />
               </div>
               <div className="space-y-1.5">
-                <Label>Cr�ditos</Label>
+                <Label>Créditos</Label>
                 <Input type="number" value={form.creditos} onChange={(e) => setForm({ ...form, creditos: e.target.value })} placeholder="10" />
               </div>
             </div>
             <div className="space-y-1.5">
-              <Label>Pre�o (R$)</Label>
+              <Label>Preço (R$)</Label>
               <Input type="number" step="0.01" value={form.preco} onChange={(e) => setForm({ ...form, preco: e.target.value })} placeholder="500.00" />
             </div>
             <div className="space-y-1.5">
-              <Label>Descri��o (opcional)</Label>
+              <Label>Descrição (opcional)</Label>
               <Textarea value={form.descricao} onChange={(e) => setForm({ ...form, descricao: e.target.value })} />
             </div>
             <Button onClick={handleCreate} disabled={saving}>
@@ -118,7 +118,7 @@ export default function AdminPacotesPage() {
                 </div>
                 <p className="mt-1 text-2xl font-extrabold">{formatCurrency(p.precoCentavos)}</p>
                 <p className="text-sm text-muted-foreground">
-                  {p.creditos} cr�ditos � {formatCurrency(Math.round(p.precoCentavos / p.creditos))}/lead
+                  {p.creditos} créditos - {formatCurrency(Math.round(p.precoCentavos / p.creditos))}/lead
                 </p>
                 {p.descricao && <p className="mt-2 text-sm text-muted-foreground">{p.descricao}</p>}
               </CardContent>
@@ -129,3 +129,4 @@ export default function AdminPacotesPage() {
     </div>
   );
 }
+

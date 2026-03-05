@@ -30,7 +30,7 @@ interface Pagination {
 }
 
 const statusLabels: Record<string, string> = {
-  NOVO: "Novo", RETIDO: "Retido", A_VENDA: "� venda",
+  NOVO: "Novo", RETIDO: "Retido", A_VENDA: "à venda",
   VENDIDO: "Vendido", BLOQUEADO: "Bloqueado",
 };
 
@@ -40,7 +40,7 @@ const statusColors: Record<string, string> = {
 };
 
 const urgenciaLabels: Record<string, string> = {
-  URGENTE: "Urgente", ALTA: "Alta", MEDIA: "M�dia", BAIXA: "Baixa",
+  URGENTE: "Urgente", ALTA: "Alta", MEDIA: "Média", BAIXA: "Baixa",
 };
 
 export default function AdminLeadsPage() {
@@ -101,7 +101,7 @@ export default function AdminLeadsPage() {
             <option value="">Todos os status</option>
             <option value="NOVO">Novo</option>
             <option value="RETIDO">Retido</option>
-            <option value="A_VENDA">� venda</option>
+            <option value="A_VENDA">à venda</option>
             <option value="VENDIDO">Vendido</option>
             <option value="BLOQUEADO">Bloqueado</option>
           </select>
@@ -110,13 +110,13 @@ export default function AdminLeadsPage() {
             onChange={(e) => setAreaFilter(e.target.value)}
             className="h-10 rounded-md border border-input bg-background px-3 text-sm"
           >
-            <option value="">Todas as �reas</option>
+            <option value="">Todas as Áreas</option>
             <option value="TRABALHISTA">Trabalhista</option>
-            <option value="PREVIDENCIARIO">Previdenci�rio</option>
+            <option value="PREVIDENCIARIO">Previdenciário</option>
             <option value="CONSUMIDOR">Consumidor</option>
-            <option value="FAMILIA">Fam�lia</option>
+            <option value="FAMILIA">Família</option>
             <option value="CRIMINAL">Criminal</option>
-            <option value="IMOVEIS">Im�veis</option>
+            <option value="IMOVEIS">Imóveis</option>
             <option value="EMPRESARIAL">Empresarial</option>
             <option value="OUTROS">Outros</option>
           </select>
@@ -143,12 +143,12 @@ export default function AdminLeadsPage() {
                   <tr className="border-b bg-muted/50 text-left">
                     <th className="px-4 py-3 font-medium">Nome</th>
                     <th className="px-4 py-3 font-medium">WhatsApp</th>
-                    <th className="px-4 py-3 font-medium">�rea</th>
+                    <th className="px-4 py-3 font-medium">Área</th>
                     <th className="px-4 py-3 font-medium">Local</th>
-                    <th className="px-4 py-3 font-medium">Urg�ncia</th>
+                    <th className="px-4 py-3 font-medium">Urgência</th>
                     <th className="px-4 py-3 font-medium">Status</th>
                     <th className="px-4 py-3 font-medium">Data</th>
-                    <th className="px-4 py-3 font-medium">A��o</th>
+                    <th className="px-4 py-3 font-medium">Ação</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -197,7 +197,7 @@ export default function AdminLeadsPage() {
             Anterior
           </Button>
           <span className="text-sm text-muted-foreground">
-            P�gina {pagination.page} de {pagination.totalPages}
+            Página {pagination.page} de {pagination.totalPages}
           </span>
           <Button
             variant="outline"
@@ -205,10 +205,11 @@ export default function AdminLeadsPage() {
             disabled={pagination.page >= pagination.totalPages}
             onClick={() => fetchLeads(pagination.page + 1)}
           >
-            Pr�xima
+            Próxima
           </Button>
         </div>
       )}
     </div>
   );
 }
+

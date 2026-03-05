@@ -14,7 +14,7 @@ export async function POST(req: NextRequest) {
     await limiter.check(10, ip); // 10 per minute
   } catch {
     return NextResponse.json(
-      { error: "Muitas requisi��es. Tente novamente em instantes." },
+      { error: "Muitas requisi--es. Tente novamente em instantes." },
       { status: 429 }
     );
   }
@@ -34,7 +34,7 @@ export async function POST(req: NextRequest) {
 
     if (!parsed.success) {
       return NextResponse.json(
-        { error: "Dados inv�lidos", details: parsed.error.flatten().fieldErrors },
+        { error: "Dados inválidos", details: parsed.error.flatten().fieldErrors },
         { status: 400 }
       );
     }
@@ -97,8 +97,9 @@ export async function POST(req: NextRequest) {
   } catch (error) {
     console.error("Error creating lead:", error);
     return NextResponse.json(
-      { error: "Erro interno ao processar sua solicita��o." },
+      { error: "Erro interno ao processar sua solicitação." },
       { status: 500 }
     );
   }
 }
+
