@@ -46,6 +46,8 @@ const faqs = [
 ];
 
 export default function AdvogadoParceiroPage() {
+  const advogadoWhatsAppMessage = "Olá! Sou advogado(a) e quero falar com a equipe comercial sobre pacotes de leads.";
+
   return (
     <>
       {/* Hero */}
@@ -192,7 +194,7 @@ export default function AdvogadoParceiroPage() {
               <Link href="/cadastro">Criar conta agora</Link>
             </Button>
             <Button size="xl" variant="whatsapp" asChild>
-              <a href={buildWhatsAppUrl()} target="_blank" rel="noopener noreferrer">
+              <a href={buildWhatsAppUrl(advogadoWhatsAppMessage)} target="_blank" rel="noopener noreferrer">
                 <MaterialIcon name="chat" size={20} />
                 Falar com nossa equipe
               </a>
@@ -203,4 +205,3 @@ export default function AdvogadoParceiroPage() {
     </>
   );
 }
-

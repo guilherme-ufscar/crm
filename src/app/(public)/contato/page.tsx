@@ -18,6 +18,7 @@ export default function ContatoPage() {
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
   const [turnstileToken, setTurnstileToken] = useState("");
+  const contatoWhatsAppMessage = "Olá! Vim pela página de contato e gostaria de falar com a equipe da Conect Juris.";
 
   const {
     register,
@@ -73,7 +74,7 @@ export default function ContatoPage() {
                     <h3 className="font-semibold">WhatsApp</h3>
                     <p className="text-sm text-muted-foreground">Atendimento rápido</p>
                     <a
-                      href={buildWhatsAppUrl()}
+                      href={buildWhatsAppUrl(contatoWhatsAppMessage)}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="mt-1 inline-block text-sm font-medium text-primary hover:underline"
@@ -186,4 +187,3 @@ export default function ContatoPage() {
     </>
   );
 }
-

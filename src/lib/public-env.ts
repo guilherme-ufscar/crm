@@ -1,4 +1,5 @@
-const rawWhatsApp = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "";
+const DEFAULT_WHATSAPP_NUMBER = "5521967115857";
+const rawWhatsApp = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || DEFAULT_WHATSAPP_NUMBER;
 
 export const PUBLIC_WHATSAPP_NUMBER = rawWhatsApp.replace(/\D/g, "");
 export const PUBLIC_APP_URL = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";

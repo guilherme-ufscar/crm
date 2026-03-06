@@ -18,6 +18,7 @@ const navLinks = [
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const headerWhatsAppMessage = "Olá! Vim pelo site e quero falar com a equipe da Conect Juris sobre meu caso jurídico.";
 
   return (
     <header className="sticky top-0 z-40 w-full border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/80">
@@ -44,7 +45,7 @@ export function Header() {
         <div className="hidden lg:flex lg:items-center lg:gap-3">
           <Button variant="whatsapp" size="sm" asChild>
             <a
-              href={buildWhatsAppUrl()}
+              href={buildWhatsAppUrl(headerWhatsAppMessage)}
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -85,7 +86,7 @@ export function Header() {
           <div className="pt-3 border-t">
             <Button variant="whatsapp" className="w-full" asChild>
               <a
-                href={buildWhatsAppUrl()}
+                href={buildWhatsAppUrl(headerWhatsAppMessage)}
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => setIsOpen(false)}
@@ -100,4 +101,3 @@ export function Header() {
     </header>
   );
 }
-

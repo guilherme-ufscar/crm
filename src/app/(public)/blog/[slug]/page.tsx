@@ -155,6 +155,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   const { slug } = await params;
   const post = posts[slug];
   if (!post) notFound();
+  const blogWhatsAppMessage = `Olá! Li o artigo sobre ${post.area} no blog e quero conversar sobre meu caso.`;
 
   return (
     <section className="py-12 sm:py-20">
@@ -195,7 +196,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               </Link>
             </Button>
             <Button variant="whatsapp" asChild>
-              <a href={buildWhatsAppUrl()} target="_blank" rel="noopener noreferrer">
+              <a href={buildWhatsAppUrl(blogWhatsAppMessage)} target="_blank" rel="noopener noreferrer">
                 <WhatsAppIcon className="h-4 w-4" />
                 Falar no WhatsApp
               </a>
@@ -206,4 +207,3 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     </section>
   );
 }
-

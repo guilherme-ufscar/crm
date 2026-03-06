@@ -263,6 +263,7 @@ export default async function AreaPage({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const area = areasData.find((a) => a.slug === slug);
   if (!area) notFound();
+  const areaWhatsAppMessage = `Olá! Quero atendimento na área de ${area.label}. Vim pela página de áreas do site.`;
 
   const areaIconName = iconMap[area.icon] || "balance";
 
@@ -358,7 +359,7 @@ export default async function AreaPage({ params }: { params: Promise<{ slug: str
             </Button>
             <Button size="xl" variant="whatsapp" asChild>
               <a
-                href={buildWhatsAppUrl()}
+                href={buildWhatsAppUrl(areaWhatsAppMessage)}
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -372,5 +373,4 @@ export default async function AreaPage({ params }: { params: Promise<{ slug: str
     </>
   );
 }
-
 

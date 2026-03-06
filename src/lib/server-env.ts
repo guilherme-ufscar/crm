@@ -14,7 +14,7 @@ export const SERVER_ENV = {
   nextAuthUrl: process.env.NEXTAUTH_URL || "http://localhost:3000",
   appPort: asInt(process.env.APP_PORT || process.env.PORT, 3000),
   appHost: process.env.APP_HOST || "0.0.0.0",
-  whatsappNumber: process.env.WHATSAPP_NUMBER || process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "",
+  whatsappNumber: process.env.WHATSAPP_NUMBER || process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "5521967115857",
   turnstileSecretKey: process.env.TURNSTILE_SECRET_KEY || "",
   smtpHost: process.env.SMTP_HOST || "",
   smtpPort: asInt(process.env.SMTP_PORT, 587),

@@ -69,6 +69,9 @@ const faqs = [
 ];
 
 export default function HomePage() {
+  const homeHeroWhatsAppMessage = "Olá! Quero falar agora com a equipe da Conect Juris para tirar dúvidas sobre meu caso.";
+  const homeFinalWhatsAppMessage = "Olá! Quero enviar meu caso e receber orientação jurídica pelo WhatsApp.";
+
   return (
     <>
       <section className="relative overflow-hidden bg-gradient-to-br from-[#eef4ff] via-white to-[#e8efff]">
@@ -92,7 +95,7 @@ export default function HomePage() {
                   </Link>
                 </Button>
                 <Button variant="whatsapp" size="xl" asChild>
-                  <a href={buildWhatsAppUrl()} target="_blank" rel="noopener noreferrer">
+                  <a href={buildWhatsAppUrl(homeHeroWhatsAppMessage)} target="_blank" rel="noopener noreferrer">
                     <WhatsAppIcon className="h-5 w-5" />
                     Falar agora no WhatsApp
                   </a>
@@ -242,7 +245,7 @@ export default function HomePage() {
               </Link>
             </Button>
             <Button size="xl" variant="whatsapp" asChild>
-              <a href={buildWhatsAppUrl()} target="_blank" rel="noopener noreferrer">
+              <a href={buildWhatsAppUrl(homeFinalWhatsAppMessage)} target="_blank" rel="noopener noreferrer">
                 <WhatsAppIcon className="h-5 w-5" />
                 Falar no WhatsApp
               </a>
@@ -253,4 +256,3 @@ export default function HomePage() {
     </>
   );
 }
-

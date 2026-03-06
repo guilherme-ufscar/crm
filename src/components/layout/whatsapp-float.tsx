@@ -8,10 +8,11 @@ export function WhatsAppFloat() {
   const handleClick = () => {
     trackEvent("clique_whatsapp_home", { location: "floating_button" });
   };
+  const floatWhatsAppMessage = "Olá! Quero um atendimento rápido pelo WhatsApp para entender como funciona a Conect Juris.";
 
   return (
     <a
-      href={buildWhatsAppUrl()}
+      href={buildWhatsAppUrl(floatWhatsAppMessage)}
       target="_blank"
       rel="noopener noreferrer"
       onClick={handleClick}
@@ -22,4 +23,3 @@ export function WhatsAppFloat() {
     </a>
   );
 }
-
